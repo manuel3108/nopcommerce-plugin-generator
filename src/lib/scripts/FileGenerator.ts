@@ -10,6 +10,14 @@ export class FileGenerator {
 		files.push(JsonFileGenerator.generatePluginsJson2());
 		files.push(CsprojFileGenerator.generateProjectFile());
 
+		FileGenerator.updateFileIds(files);
+
 		return files;
+	}
+
+	private static updateFileIds(files: File[]) {
+		files.forEach((file, index) => {
+			file.id = index;
+		});
 	}
 }

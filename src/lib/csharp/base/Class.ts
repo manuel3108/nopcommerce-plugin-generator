@@ -28,8 +28,22 @@ export default class Class {
 
 namespace ${this.namespace} {
 ${getIntend(baseIntend)}public class ${this.name} {
+
+${getIntend(baseIntend + 1)}#region Fields
+
+${getIntend(baseIntend + 1)}#endregion
+
+${getIntend(baseIntend + 1)}#region Ctor
+
 ${this.myConstructor.toString(baseIntend + 1)}
+
+${getIntend(baseIntend + 1)}#endregion
+
+${getIntend(baseIntend + 1)}#region Methods
+
 ${this.methods.map((method) => method.toString(baseIntend + 1)).join(LineBreak)}
+
+${getIntend(baseIntend + 1)}#endregion
 ${getIntend(baseIntend)}}
 }`;
 	}

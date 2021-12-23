@@ -13,49 +13,19 @@
 	let myClass;
 	let activeCode = '';
 
-	// const tree = {
-	// 	label: 'USA',
-	// 	children: [
-	// 		{
-	// 			label: 'Florida',
-	// 			children: [
-	// 				{ label: 'Jacksonville' },
-	// 				{
-	// 					label: 'Orlando',
-	// 					children: [
-	// 						{ label: 'Disney World' },
-	// 						{ label: 'Universal Studio' },
-	// 						{ label: 'Sea World' }
-	// 					]
-	// 				},
-	// 				{ label: 'Miami' }
-	// 			]
-	// 		},
-	// 		{
-	// 			label: 'California',
-	// 			children: [{ label: 'San Francisco' }, { label: 'Los Angeles' }, { label: 'Sacramento' }]
-	// 		}
-	// 	]
-	// };
 	let tree: TreeNode = {
 		children: [],
 		fileName: 'root',
-		isDirectory: true
+		isDirectory: true,
+		fileId: -1
 	};
+	let files: File[] = [];
 
 	$: {
 		myClass = new Class(nameSpace, pluginName);
 		activeCode = myClass.toString();
 
-		const files = FileGenerator.generate();
-		// convert files to file tree
-		// files.forEach((file) => {
-		// 	addFileToTree(file, file);
-		// });
-
-		// orderTree(tree);
-		// files.map(addnode);
-
+		files = FileGenerator.generate();
 		const temp = filesToTreeNodes(files);
 		tree.children = temp;
 		tree = orderTree(tree);
@@ -89,13 +59,16 @@
 			var splitpath = temp;
 			var ptr: TreeNode[] = localTree;
 			for (let i = 0; i < splitpath.length; i++) {
-				let node: any = {
+				let node: TreeNode = {
 					fileName: splitpath[i],
-					isDirectory: true
+					isDirectory: true,
+					children: [],
+					fileId: -1
 				};
 				if (i == splitpath.length - 1) {
 					node.isDirectory = false;
 					node.fileName = file.fullName;
+					node.fileId = file.id;
 				}
 				ptr[splitpath[i]] = ptr[splitpath[i]] || node;
 				ptr[splitpath[i]].children = ptr[splitpath[i]].children || {};
@@ -118,72 +91,12 @@
 		return Object.values(localTree);
 	}
 
-	// function objectToArr(node) {
-	// 	Object.keys(node || {}).map((k) => {
-	// 		if (node[k].children) {
-	// 			objectToArr(node[k]);
-	// 		}
-	// 	});
-	// 	if (node.children) {
-	// 		node.children = Object.values(node.children);
-	// 		node.children.forEach(objectToArr);
-	// 	}
-	// }
-
-	// function addnode(file) {
-	// 	var ptr = tree;
-	// 	for (var i = 0; i < file.path.length; i++) {
-	// 		var node = { name: file.path[i], type: 'directory', size: 0 };
-	// 		if (i == file.path.length - 1) {
-	// 			node.fileName = file.fullName;
-	// 		}
-	// 		ptr[file.path[i]] = ptr[file.path[i]] || node;
-	// 		ptr[file.path[i]].children = ptr[file.path[i]].children || {};
-	// 		ptr = ptr[file.path[i]].children;
-	// 	}
-	// }
-
-	// function orderTree(tree) {
-	// 	tree.children.sort((a, b) => {
-	// 		if (a.children === undefined && b.children === undefined) {
-	// 			return a.label > b.label ? 1 : -1;
-	// 		} else {
-	// 			return a.label > b.label ? 1 : -1;
-	// 		}
-	// 	});
-
-	// 	tree.children.forEach((child) => {
-	// 		if (child.children) {
-	// 			orderTree(child);
-	// 		}
-	// 	});
-	// }
-
-	// function addFileToTree(file: File, tree: any) {
-	// 	let path = file.Path;
-	// 	let current = tree;
-	// 	path.forEach((p) => {
-	// 		if (!current.children) {
-	// 			current.children = [];
-	// 		}
-	// 		let found = current.children.find((c) => c.label === p);
-	// 		if (!found) {
-	// 			found = { label: p, children: [] };
-	// 			current.children.push(found);
-	// 		}
-	// 		current = found;
-	// 	});
-	// 	// current.file = file;
-	// 	current.children.push({ label: file.fullName });
-	// }
-
 	function downloadZip() {
 		console.log(pluginName);
 	}
 
-	function openFile(fileName) {
-		console.log(fileName);
-		activeCode = fileName;
+	function openFile(fileId) {
+		activeCode = files[fileId].content;
 	}
 </script>
 
@@ -196,6 +109,30 @@
 	<button on:click={downloadZip} class="button is-primary">Download</button>
 </div>
 
-<TreeView {tree} callback={openFile} />
+<div class="split-view">
+	<div class="files">
+		<TreeView {tree} callback={openFile} />
+	</div>
 
-<Monaco code={activeCode} />
+	<div class="editor">
+		<Monaco code={activeCode} />
+	</div>
+</div>
+
+<style>
+	.split-view {
+		display: flex;
+	}
+
+	.split-view div {
+		display: block;
+	}
+
+	.files {
+		width: 20%;
+	}
+
+	.editor {
+		width: 80%;
+	}
+</style>

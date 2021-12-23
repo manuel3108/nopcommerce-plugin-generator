@@ -13,7 +13,7 @@ export default class Method {
 		this.parameters = [];
 
 		this.parameters.push(new Parameter('string', 'name'));
-		this.parameters.push(new Parameter('string', 'asd'));
+		this.parameters.push(new Parameter('MyComplexType', 'asd'));
 	}
 
 	public toString(baseIntend: number): string {

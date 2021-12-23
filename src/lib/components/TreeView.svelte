@@ -11,7 +11,7 @@
 	import { slide } from 'svelte/transition';
 	export let tree: TreeNode;
 	export let callback;
-	const { fileName, children, isDirectory } = tree;
+	const { fileName, children, isDirectory, fileId } = tree;
 
 	let expanded = _expansionState[fileName] || false;
 	const toggleExpansion = () => {
@@ -33,7 +33,7 @@
 				{/each}
 			{/if}
 		{:else}
-			<button on:click={() => callback(fileName)}>
+			<button on:click={() => callback(fileId)}>
 				{fileName}
 			</button>
 		{/if}
@@ -44,13 +44,12 @@
 	ul {
 		margin: 0;
 		list-style: none;
-		padding-left: 1.2rem;
+		padding-left: 0.5rem;
 		user-select: none;
 	}
 	.arrow {
 		cursor: pointer;
 		display: inline-block;
-		/* transition: transform 200ms; */
 	}
 	.arrowDown {
 		transform: rotate(90deg);

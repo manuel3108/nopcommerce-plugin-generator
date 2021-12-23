@@ -1,8 +1,9 @@
 export class File {
 	private name: string;
 	private extension: string;
-	private content: string;
+	public content: string;
 	private path: string[];
+	public id: number;
 
 	constructor(name: string, extension: string, path: string[], content: string) {
 		this.name = name;
