@@ -30,6 +30,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@sveltejs/adapter-static": "^1.0.0-next.23",
 		"file-saver": "^2.0.5",
 		"jszip": "^3.7.1",
 		"monaco-editor": "^0.31.1"
