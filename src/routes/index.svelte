@@ -54,9 +54,7 @@
 		config.details.group = pluginGroup;
 		config.details.systemName = systemName || pluginGroup + '.' + pluginName;
 		config.details.pluginImage = pluginImageUrl;
-	}
 
-	$: {
 		if (version === Version.v4_40_x) files = FileGenerator4_40_x.generate(config);
 		else if (version === Version.v4_50_x) files = FileGenerator4_50_x.generate(config);
 
@@ -132,7 +130,7 @@
 
 <hr />
 
-<Box title="Preview">
+<Box title="Preview (binary files not shown)">
 	<div class="split-view">
 		<div class="files">
 			<TreeView bind:tree={fileTree} callback={openFile} />

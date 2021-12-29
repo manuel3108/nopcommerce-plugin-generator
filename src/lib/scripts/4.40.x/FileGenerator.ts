@@ -12,6 +12,7 @@ export class FileGenerator {
 		files.push(JsonFileGenerator.generatePluginsJsonFile(config));
 		files.push(CsprojFileGenerator.generateProjectFile(config));
 		files.push(CSharpFileGenerator.generateBasePluginClass(config));
+		files.push(CSharpFileGenerator.generatePluginDefaultsClass(config));
 
 		FileGenerator.updateFileIds(files);
 
