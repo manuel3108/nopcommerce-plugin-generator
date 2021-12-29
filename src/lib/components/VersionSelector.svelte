@@ -1,6 +1,8 @@
-<script>
+<script lang="ts">
 	import { Version } from '$lib/scripts/common/Version';
 	import FormField from './common/FormField.svelte';
+
+	export let version: string;
 
 	const versions = [];
 
@@ -9,10 +11,10 @@
 	}
 </script>
 
-<FormField name="NopCommerce Version">
-	<select>
-		{#each versions as version}
-			<option value={version}>{Version[version]}</option>
+<FormField name="NopCommerce Version" required={true}>
+	<select bind:value={version}>
+		{#each versions as v}
+			<option value={Version[v]}>{Version[v]}</option>
 		{/each}
 	</select>
 </FormField>

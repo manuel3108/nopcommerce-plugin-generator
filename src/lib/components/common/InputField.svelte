@@ -3,8 +3,9 @@
 
 	export let name;
 	export let value = '';
+	export let placeholder = '';
 </script>
 
-<FormField {name}>
-	<input type="text" bind:value />
+<FormField {name} required={!placeholder}>
+	<input type="text" bind:value {placeholder} />
 </FormField>

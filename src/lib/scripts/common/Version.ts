@@ -1,4 +1,4 @@
 export enum Version {
-	Version_4_40_x = '4.40.x',
-	Version_4_3 = '4.3'
+	v4_40_x = '4.40.x',
+	v4_50_x = '4.50.x'
 }

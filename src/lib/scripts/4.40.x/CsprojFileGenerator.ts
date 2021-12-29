@@ -1,48 +1,41 @@
-import { File } from './common/File';
+import type PluginConfig from '../common/configs/PluginConfig';
+import { File } from '../common/File';
 
 export class CsprojFileGenerator {
-	static generateProjectFile(): File {
+	static generateProjectFile(config: PluginConfig): File {
 		return new File(
-			'project',
+			config.base.nameSpace,
 			'csproj',
-			['src', 'lib', 'scripts'],
+			[],
 			`<Project Sdk="Microsoft.NET.Sdk">
 
 <PropertyGroup>
-	<TargetFramework>net6.0</TargetFramework>
-	<Copyright>Copyright © Nop Solutions, Ltd</Copyright>
-	<Company>Nop Solutions, Ltd</Company>
-	<Authors>Nop Solutions, Ltd</Authors>
+	<TargetFramework>net5.0</TargetFramework>
+	<Copyright>Copyright © ${config.details.author}</Copyright>
+	<Company>${config.details.author}</Company>
+	<Authors>${config.details.author}</Authors>
 	<PackageLicenseUrl></PackageLicenseUrl>
 	<PackageProjectUrl>https://www.nopcommerce.com/</PackageProjectUrl>
 	<RepositoryUrl>https://github.com/nopSolutions/nopCommerce</RepositoryUrl>
 	<RepositoryType>Git</RepositoryType>
-	<OutputPath>..\\..\\Presentation\\Nop.Web\\Plugins\\DiscountRules.CustomerRoles</OutputPath>
+	<OutputPath>..\\..\\Presentation\\Nop.Web\\Plugins\\${config.details.systemName}</OutputPath>
 	<OutDir>$(OutputPath)</OutDir>
 	<!--Set this parameter to true to get the dlls copied from the NuGet cache to the output of your project.
 	You need to set this parameter to true if your plugin has a nuget package 
 	to ensure that the dlls copied from the NuGet cache to the output of your project-->
-	<CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+	<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 </PropertyGroup>
 
 <ItemGroup>
-	<None Remove="logo.jpg" />
+	<None Remove="logo.png" />
 	<None Remove="plugin.json" />
-	<None Remove="Views\\Configure.cshtml" />
-	<None Remove="Views\\_ViewImports.cshtml" />
 </ItemGroup>
 
 <ItemGroup>
-	<Content Include="logo.jpg">
+	<Content Include="logo.png">
 	<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	</Content>
 	<Content Include="plugin.json">
-	<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	</Content>
-	<Content Include="Views\\Configure.cshtml">
-	<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	</Content>
-	<Content Include="Views\\_ViewImports.cshtml">
 	<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	</Content>
 </ItemGroup>

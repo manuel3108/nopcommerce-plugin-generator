@@ -11,30 +11,31 @@
 	import { slide } from 'svelte/transition';
 	export let tree: TreeNode;
 	export let callback;
-	const { fileName, children, isDirectory, fileId } = tree;
 
-	let expanded = _expansionState[fileName] || false;
+	let expanded = _expansionState[tree.fileName] || tree.isRoot;
 	const toggleExpansion = () => {
-		expanded = _expansionState[fileName] = !expanded;
+		expanded = _expansionState[tree.fileName] = !expanded;
 	};
 	$: arrowDown = expanded;
 </script>
 
 <ul transition:slide>
 	<li>
-		{#if isDirectory}
-			<span on:click={toggleExpansion}>
-				<span class="arrow" class:arrowDown>&#x25b6</span>
-				{fileName}
-			</span>
-			{#if expanded}
-				{#each children as child}
-					<svelte:self tree={child} {callback} />
-				{/each}
-			{/if}
+		{#if tree.isDirectory}
+			<div class="pointer">
+				<span on:click={toggleExpansion}>
+					<span class="arrow" class:arrowDown>&#x25b6</span>
+					{tree.fileName}
+				</span>
+				{#if expanded}
+					{#each tree.children as child}
+						<svelte:self tree={child} {callback} />
+					{/each}
+				{/if}
+			</div>
 		{:else}
-			<button on:click={() => callback(fileId)}>
-				{fileName}
+			<button class="button is-primary" on:click={() => callback(tree.fileId)}>
+				{tree.fileName}
 			</button>
 		{/if}
 	</li>
@@ -47,8 +48,16 @@
 		padding-left: 0.5rem;
 		user-select: none;
 	}
-	.arrow {
+
+	.pointer {
 		cursor: pointer;
+	}
+
+	.pointer span {
+		white-space: nowrap;
+	}
+
+	.arrow {
 		display: inline-block;
 	}
 	.arrowDown {

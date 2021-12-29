@@ -12,6 +12,16 @@
 
 @import '../node_modules/bulmaswatch/darkly/_overrides';
 
+select {
+	background-color: #505050;
+	border-color: #909090 !important;
+	color: white;
+}
+
+input:placeholder-shown {
+	font-style: italic;
+}
+
 input,
 button,
 select,

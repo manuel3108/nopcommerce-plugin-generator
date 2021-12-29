@@ -1,123 +1,157 @@
 <script lang="ts">
 	import VersionSelector from '$lib/components/VersionSelector.svelte';
 	import InputField from '$lib/components/common/InputField.svelte';
-	import Class from '$lib/csharp/base/Class';
 	import Monaco from '$lib/components/Monaco.svelte';
 	import TreeView from '$lib/components/TreeView.svelte';
-	import { FileGenerator } from '$lib/scripts/FileGenerator';
+	import { FileGenerator as FileGenerator4_40_x } from '$lib/scripts/4.40.x/FileGenerator';
+	import { FileGenerator as FileGenerator4_50_x } from '$lib/scripts/4.50.x/FileGenerator';
 	import type { File } from '$lib/scripts/common/File';
-	import type { TreeNode } from '$lib/scripts/common/FileTree';
+	import { TreeNode, filesToTreeNodes, orderTree } from '$lib/scripts/common/FileTree';
+	import { Version } from '$lib/scripts/common/Version';
+	import PluginConfig from '$lib/scripts/common/configs/PluginConfig';
+	import Box from '$lib/components/common/Box.svelte';
+	import { PluginGroup } from '$lib/scripts/common/PluginGroup';
+	import PluginGroupSelector from '$lib/components/PluginGroupSelector.svelte';
+	import JSZip from 'jszip';
+	import saveAs from 'file-saver';
+	import { Intend } from '$lib/csharp/common/Defaults';
+	import PluginImageUpload from '$lib/components/PluginImageUpload.svelte';
 
 	let pluginName = 'FancyPdf';
-	let nameSpace = 'Innovapps.Nop.Pluing.Misc.FancyPdf';
-	let myClass;
-	let activeCode = '';
+	let nameSpace = 'Innovapps.Nop.Plugin.Misc.FancyPdf';
+	let version = Version.v4_40_x;
+	let author = 'Innovapps';
+	let pluginDescription = 'FancyPdf description';
+	let friendlyName: string;
+	let pluginVersion: string;
+	let pluginGroup = PluginGroup.Misc;
+	let systemName: string;
 
-	let tree: TreeNode = {
+	let pluginVersionDefault = '1.0.0';
+	let config: PluginConfig;
+
+	let activeCode = '';
+	let lastFileId = 0;
+	let pluginImageUrl;
+
+	let fileTree: TreeNode = {
 		children: [],
 		fileName: 'root',
 		isDirectory: true,
-		fileId: -1
+		fileId: -1,
+		isRoot: true
 	};
 	let files: File[] = [];
 
 	$: {
-		myClass = new Class(nameSpace, pluginName);
-		activeCode = myClass.toString();
-
-		files = FileGenerator.generate();
-		const temp = filesToTreeNodes(files);
-		tree.children = temp;
-		tree = orderTree(tree);
-		// console.log(objectToArr(tree));
+		config = new PluginConfig();
+		config.base.nameSpace = nameSpace;
+		config.base.pluginName = pluginName;
+		config.details.author = author;
+		config.details.description = pluginDescription;
+		config.details.friendlyName = friendlyName || pluginName;
+		config.details.version = pluginVersion || pluginVersionDefault;
+		config.details.group = pluginGroup;
+		config.details.systemName = systemName || pluginGroup + '.' + pluginName;
+		config.details.pluginImage = pluginImageUrl;
 	}
 
-	function orderTree(tree: TreeNode): TreeNode {
-		const { children } = tree;
+	$: {
+		if (version === Version.v4_40_x) files = FileGenerator4_40_x.generate(config);
+		else if (version === Version.v4_50_x) files = FileGenerator4_50_x.generate(config);
 
-		const directorys = children.filter((child) => child.isDirectory);
-		const files = children.filter((child) => !child.isDirectory);
+		const childNodes = filesToTreeNodes(files);
 
-		directorys.sort((a, b) => a.fileName.localeCompare(b.fileName));
-		files.sort((a, b) => a.fileName.localeCompare(b.fileName));
+		fileTree.children = childNodes;
+		fileTree.fileName = config.base.nameSpace;
 
-		const orderedChildren = [...directorys, ...files];
+		fileTree = orderTree(fileTree);
 
-		tree.children = orderedChildren;
+		openFile(lastFileId);
+	}
 
-		tree.children.forEach((child) => {
-			orderTree(child);
+	function downloadPlugin() {
+		const zip = new JSZip();
+
+		addFilesToZip(fileTree, zip);
+
+		var uri = pluginImageUrl;
+		var index = uri.indexOf('base64,') + 'base64,'.length;
+		var content = uri.substring(index);
+		zip.file(config.base.nameSpace + '/logo.png', content, { base64: true });
+
+		zip.generateAsync({ type: 'blob' }).then(function (content) {
+			saveAs(content, config.base.nameSpace + '.zip');
 		});
-
-		return tree;
 	}
 
-	function filesToTreeNodes(files: File[]): TreeNode[] {
-		var localTree: TreeNode[] = [];
-		function addnode(file: File) {
-			var temp = [...file.Path, file.fullName];
-			var splitpath = temp;
-			var ptr: TreeNode[] = localTree;
-			for (let i = 0; i < splitpath.length; i++) {
-				let node: TreeNode = {
-					fileName: splitpath[i],
-					isDirectory: true,
-					children: [],
-					fileId: -1
-				};
-				if (i == splitpath.length - 1) {
-					node.isDirectory = false;
-					node.fileName = file.fullName;
-					node.fileId = file.id;
-				}
-				ptr[splitpath[i]] = ptr[splitpath[i]] || node;
-				ptr[splitpath[i]].children = ptr[splitpath[i]].children || {};
-				ptr = ptr[splitpath[i]].children;
-			}
-		}
-		function objectToArr(node) {
-			Object.keys(node || {}).map((k) => {
-				if (node[k].children) {
-					objectToArr(node[k]);
-				}
+	function addFilesToZip(tree: TreeNode, zip: JSZip) {
+		if (tree.isDirectory) {
+			const folder = zip.folder(tree.fileName);
+			tree.children.forEach((child) => {
+				addFilesToZip(child, folder);
 			});
-			if (node.children) {
-				node.children = Object.values(node.children);
-				node.children.forEach(objectToArr);
-			}
+		} else {
+			zip.file(tree.fileName, files[tree.fileId].content);
 		}
-		files.map(addnode);
-		objectToArr(localTree);
-		return Object.values(localTree);
-	}
-
-	function downloadZip() {
-		console.log(pluginName);
 	}
 
 	function openFile(fileId) {
+		lastFileId = fileId;
 		activeCode = files[fileId].content;
+	}
+
+	function downloadConfig() {
+		const configJson = JSON.stringify(config, null, Intend);
+		saveAs(new Blob([configJson], { type: 'application/json' }), 'config.json');
 	}
 </script>
 
-<VersionSelector />
+<h1 class="title">NopCommerce Plugin Generator</h1>
+<h2 class="subtitle">some description about the goal of this project</h2>
 
-<InputField name="Plugin Name" bind:value={pluginName} />
-<InputField name="NameSpace" bind:value={nameSpace} />
+<Box title="Base config">
+	<VersionSelector bind:version />
+	<PluginGroupSelector bind:group={pluginGroup} />
+	<InputField name="Plugin Name" bind:value={pluginName} />
+	<InputField name="NameSpace" bind:value={nameSpace} />
+</Box>
 
-<div>
-	<button on:click={downloadZip} class="button is-primary">Download</button>
-</div>
+<Box title="Details">
+	<InputField name="Author" bind:value={author} />
+	<InputField name="Description" bind:value={pluginDescription} />
+	<InputField name="Friendly name" bind:value={friendlyName} placeholder={pluginName} />
+	<InputField name="Version" bind:value={pluginVersion} placeholder={pluginVersionDefault} />
+	<InputField
+		name="System name"
+		bind:value={systemName}
+		placeholder={pluginGroup + '.' + pluginName}
+	/>
+	<PluginImageUpload bind:url={pluginImageUrl} />
+</Box>
 
-<div class="split-view">
-	<div class="files">
-		<TreeView {tree} callback={openFile} />
+<hr />
+
+<Box title="Preview">
+	<div class="split-view">
+		<div class="files">
+			<TreeView bind:tree={fileTree} callback={openFile} />
+		</div>
+
+		<div class="editor">
+			<Monaco code={activeCode} />
+		</div>
 	</div>
+</Box>
 
-	<div class="editor">
-		<Monaco code={activeCode} />
+<hr />
+
+<Box title="Downloads">
+	<div>
+		<button on:click={downloadPlugin} class="button is-primary">Download Plugin As Zip</button>
+		<button on:click={downloadConfig} class="button is-primary">Download Config</button>
 	</div>
-</div>
+</Box>
 
 <style>
 	.split-view {
@@ -130,6 +164,7 @@
 
 	.files {
 		width: 20%;
+		overflow: auto;
 	}
 
 	.editor {

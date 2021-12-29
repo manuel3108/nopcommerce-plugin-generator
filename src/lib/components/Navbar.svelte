@@ -4,14 +4,14 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
 	<div class="navbar-brand">
 		<div class="navbar-item">
-			<a href="/"><img src="/favicon.png" alt="Plugin Gleisbelegung Logo" /></a>
-			Plugin Gleisbelegung
+			<a href="/"><img src="/favicon.png" alt="NopCommerce Plugin Generator" /></a>
+			NopCommerce Plugin Generator
 		</div>
 	</div>
 	<div class="navbar-menu">
 		<div class="navbar-end">
 			<div class="navbar-item">
-				<a href="https://github.com/gleisbelegung/gleisbelegung">Github</a>
+				<a href="https://github.com/manuel3108/nopcommerce-plugin-generator">Github</a>
 			</div>
 			<div class="navbar-item">
 				<span>
