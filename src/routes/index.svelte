@@ -16,23 +16,25 @@
 	import saveAs from 'file-saver';
 	import { Intend } from '$lib/csharp/common/Defaults';
 	import PluginImageUpload from '$lib/components/PluginImageUpload.svelte';
+	import { onMount } from 'svelte';
 
-	let pluginName = 'FancyPdf';
-	let nameSpace = 'Innovapps.Nop.Plugin.Misc.FancyPdf';
-	let version = Version.v4_40_x;
-	let author = 'Innovapps';
-	let pluginDescription = 'FancyPdf description';
+	let config = new PluginConfig();
+	config.base.pluginName = 'FancyPdf';
+	config.base.nameSpace = 'Innovapps.Nop.Plugin.Misc.FancyPdf';
+	config.base.nopCommerceVersion = Version.v4_40_x;
+	config.details.author = 'Innovapps';
+	config.details.description = 'FancyPdf description';
+	config.details.group = PluginGroup.Misc;
 	let friendlyName: string;
 	let pluginVersion: string;
-	let pluginGroup = PluginGroup.Misc;
 	let systemName: string;
 
 	let pluginVersionDefault = '1.0.0';
-	let config: PluginConfig;
 
 	let activeCode = '';
 	let lastFileId = 0;
 	let pluginImageUrl;
+	let isMounted = false;
 
 	let fileTree: TreeNode = {
 		children: [],
@@ -43,29 +45,29 @@
 	};
 	let files: File[] = [];
 
+	onMount(() => {
+		isMounted = true;
+	});
+
 	$: {
-		config = new PluginConfig();
-		config.base.nameSpace = nameSpace;
-		config.base.pluginName = pluginName;
-		config.details.author = author;
-		config.details.description = pluginDescription;
-		config.details.friendlyName = friendlyName || pluginName;
-		config.details.version = pluginVersion || pluginVersionDefault;
-		config.details.group = pluginGroup;
-		config.details.systemName = systemName || pluginGroup + '.' + pluginName;
-		config.details.pluginImage = pluginImageUrl;
+		if (isMounted) {
+			config.details.friendlyName = friendlyName || config.base.pluginName;
+			config.details.version = pluginVersion || pluginVersionDefault;
+			config.details.systemName = systemName || config.details.group + '.' + config.base.pluginName;
+			config.details.pluginImage = pluginImageUrl;
 
-		if (version === Version.v4_40_x) files = FileGenerator4_40_x.generate(config);
-		else if (version === Version.v4_50_x) files = FileGenerator4_50_x.generate(config);
+			if (config.base.nopCommerceVersion === Version.v4_40_x) files = FileGenerator4_40_x.generate(config);
+			else if (config.base.nopCommerceVersion === Version.v4_50_x) files = FileGenerator4_50_x.generate(config);
 
-		const childNodes = filesToTreeNodes(files);
+			const childNodes = filesToTreeNodes(files);
 
-		fileTree.children = childNodes;
-		fileTree.fileName = config.base.nameSpace;
+			fileTree.children = childNodes;
+			fileTree.fileName = config.base.nameSpace;
 
-		fileTree = orderTree(fileTree);
+			fileTree = orderTree(fileTree);
 
-		openFile(lastFileId);
+			openFile(lastFileId);
+		}
 	}
 
 	function downloadPlugin() {
@@ -109,22 +111,18 @@
 <h2 class="subtitle">some description about the goal of this project</h2>
 
 <Box title="Base config">
-	<VersionSelector bind:version />
-	<PluginGroupSelector bind:group={pluginGroup} />
-	<InputField name="Plugin Name" bind:value={pluginName} />
-	<InputField name="NameSpace" bind:value={nameSpace} />
+	<VersionSelector bind:version={config.base.nopCommerceVersion} />
+	<PluginGroupSelector bind:group={config.details.group} />
+	<InputField name="Plugin Name" bind:value={config.base.pluginName} />
+	<InputField name="NameSpace" bind:value={config.base.nameSpace} />
 </Box>
 
 <Box title="Details">
-	<InputField name="Author" bind:value={author} />
-	<InputField name="Description" bind:value={pluginDescription} />
-	<InputField name="Friendly name" bind:value={friendlyName} placeholder={pluginName} />
+	<InputField name="Author" bind:value={config.details.author} />
+	<InputField name="Description" bind:value={config.details.description} />
+	<InputField name="Friendly name" bind:value={friendlyName} placeholder={config.base.pluginName} />
 	<InputField name="Version" bind:value={pluginVersion} placeholder={pluginVersionDefault} />
-	<InputField
-		name="System name"
-		bind:value={systemName}
-		placeholder={pluginGroup + '.' + pluginName}
-	/>
+	<InputField name="System name" bind:value={systemName} placeholder={config.details.group + '.' + config.base.pluginName} />
 	<PluginImageUpload bind:url={pluginImageUrl} />
 </Box>
 
