@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="modulepreload" href="/_app/start-5d1c5afe.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-86990cd0.js">
+		<link rel="modulepreload" href="/_app/chunks/preload-helper-ec9aa979.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-f33ca773.js">
+		<link rel="modulepreload" href="/_app/pages/index.svelte-818bd122.js">
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-6a757c9f.css">
+		<link rel="stylesheet" href="/_app/assets/pages/index.svelte-f2b04a85.css">
+
+		<script type="module">
+			import { start } from "/_app/start-5d1c5afe.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				host: location.host,
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-f33ca773.js"),
+						import("/_app/pages/index.svelte-818bd122.js")
+					],
+					page: {
+						host: location.host, // TODO this is redundant
+						path: "\u002F",
+						query: new URLSearchParams(""),
+						params: {}
+					}
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<nav class="navbar svelte-1i1mihx" role="navigation" aria-label="main navigation"><div class="navbar-brand"><div class="navbar-item"><a href="/"><img src="/favicon.png" alt="Plugin Gleisbelegung Logo" class="svelte-1i1mihx"></a>
+			Plugin Gleisbelegung
+		</div></div>
+	<div class="navbar-menu"><div class="navbar-end"><div class="navbar-item"><a href="https://github.com/gleisbelegung/gleisbelegung">Github</a></div>
+			<div class="navbar-item"><span></span></div></div></div>
+</nav>
+
+<main class="svelte-10hoedr"><div class="field"><label class="label">NopCommerce Version</label>
+	<div class="control"><select><option value="Version_4_40_x">4.40.x</option><option value="Version_4_3">4.3</option></select></div></div>
+
+<div class="field"><label class="label">Plugin Name</label>
+	<div class="control"><input type="text" value="FancyPdf"></div></div>
+<div class="field"><label class="label">NameSpace</label>
+	<div class="control"><input type="text" value="Innovapps.Nop.Pluing.Misc.FancyPdf"></div></div>
+
+<div><button class="button is-primary">Download</button></div>
+
+<div class="split-view svelte-7z49qi"><div class="files svelte-7z49qi"><ul class="svelte-33qbjy"><li><span><span class="arrow svelte-33qbjy">▶</span>
+				root</span>
+			</li>
+</ul></div>
+
+	<div class="editor svelte-7z49qi"><div class="svelte-lv85rs"></div></div>
+</div>
+</main>
+
+
+
+			
+		</div>
+	</body>
+</html>
