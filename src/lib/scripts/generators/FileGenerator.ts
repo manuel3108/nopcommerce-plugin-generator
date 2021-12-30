@@ -21,6 +21,12 @@ export class FileGenerator {
 		files.push(basePlugin.generate(config));
 		files.push(pluginDefaults.generate(config));
 
+		if (config.settings.enabled) {
+			const pluginSettings = await this.loadModule(version, GeneratorLanguages.CSHARP, 'PluginSettingsGenerator');
+
+			files.push(pluginSettings.generate(config));
+		}
+
 		FileGenerator.updateFileIds(files);
 
 		return files;

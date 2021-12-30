@@ -4,6 +4,7 @@ import { Visibility } from '$lib/scripts/csharp-lib/base/Visibility';
 import type PluginConfig from '$lib/scripts/configs/PluginConfig';
 import { File } from '$lib/scripts/common/File';
 import type IFileGenerator from '../../IFileGenerator';
+import { DataTypes } from '$lib/scripts/common/DataTypes';
 
 export default class PluginDefaultsGenerator implements IFileGenerator {
 	generate(config: PluginConfig): File {
@@ -14,7 +15,15 @@ export default class PluginDefaultsGenerator implements IFileGenerator {
 	protected generatePluginDefaultsClassContent(config: PluginConfig, className: string): string {
 		const defaultsClass = new Class(config.base.nameSpace, className, false, false);
 
-		defaultsClass.addField(new Field(Visibility.Public, 'SystemName', 'string', `"${config.details.systemName}"`, true, false), false);
+		defaultsClass.addField(
+			new Field(Visibility.Public, 'SystemName', DataTypes.String, {
+				value: `"${config.details.systemName}"`,
+				isConstant: true,
+				isReadonly: false,
+				hasGetterAndSetter: false
+			}),
+			false
+		);
 
 		return defaultsClass.toString();
 	}

@@ -64,8 +64,8 @@ export default class Class {
 
 		// methods
 		if (this.addRegions) result += `${LineBreak}${getIntend(baseIntend + 1)}#region Methods${LineBreak}${LineBreak}`;
-		result += this.methods.map((method) => method.toString(baseIntend + 1)).join(LineBreak + LineBreak) + LineBreak;
-		if (this.addRegions) result += `${LineBreak}${getIntend(baseIntend + 1)}#endregion${LineBreak}`;
+		result += this.methods.map((method) => method.toString(baseIntend + 1)).join(LineBreak + LineBreak);
+		if (this.addRegions) result += `${LineBreak}${LineBreak}${getIntend(baseIntend + 1)}#endregion${LineBreak}`;
 
 		// footer
 		result += `${getIntend(baseIntend)}}${LineBreak}`;

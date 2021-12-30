@@ -45,7 +45,13 @@ export default class BasePluginGenerator implements IFileGenerator {
 
 	protected generateBasePluginClassConfigurationPageUrl(config: PluginConfig, pluginClass: Class): void {
 		pluginClass.usings.push(new Using('Nop.Core'));
-		pluginClass.addField(new Field(Visibility.Private, FieldPrefix + 'webHelper', 'IWebHelper'));
+		pluginClass.addField(
+			new Field(Visibility.Private, FieldPrefix + 'webHelper', 'IWebHelper', {
+				hasGetterAndSetter: false,
+				isConstant: false,
+				isReadonly: true
+			})
+		);
 
 		const getConfigurationPageUrl = new Method(Visibility.Public, 'GetConfigurationPageUrl', true, false, 'string');
 		pluginClass.methods.push(getConfigurationPageUrl);
