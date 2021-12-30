@@ -1,7 +1,7 @@
 <script lang="ts">
 	import VersionSelector from '$lib/components/VersionSelector.svelte';
 	import InputField from '$lib/components/common/InputField.svelte';
-	import Monaco from '$lib/components/Monaco.svelte';
+	import CodeBlock from '$lib/components/CodeBlock.svelte';
 	import TreeView from '$lib/components/TreeView.svelte';
 	import { FileGenerator } from '$lib/scripts/generators/FileGenerator';
 	import type { File } from '$lib/scripts/common/File';
@@ -147,7 +147,7 @@
 		</div>
 
 		<div class="editor">
-			<Monaco code={activeCode} />
+			<CodeBlock code={activeCode} />
 		</div>
 	</div>
 </Box>

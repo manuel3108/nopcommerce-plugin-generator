@@ -46,7 +46,7 @@ export default class Class {
 		const baseIntend = 1;
 
 		// header
-		let result = `${this.usings.map((using) => using.toString()).join(LineBreak)}${LineBreak}`;
+		let result = `${this.usings.map((using) => using.toString()).join(LineBreak)}${LineBreak}${LineBreak}`;
 		result += `namespace ${this.namespace} {${LineBreak}`;
 		result += `${getIntend(baseIntend)}public class ${this.name} ${this.inheritsFrom ? `: ${this.inheritsFrom}` : ''} {${LineBreak}`;
 
