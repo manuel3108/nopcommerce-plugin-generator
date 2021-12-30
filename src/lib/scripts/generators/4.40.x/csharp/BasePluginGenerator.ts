@@ -6,25 +6,12 @@ import { Visibility } from '$lib/csharp/base/Visibility';
 import { FieldPrefix } from '$lib/csharp/common/Defaults';
 import type PluginConfig from '$lib/scripts/common/configs/PluginConfig';
 import { File } from '$lib/scripts/common/File';
-import type ICSharpFileGenerator from '../interfaces/ICsharpFileGenerator';
+import type IFileGenerator from '../../IFileGenerator';
 
-export default class CSharpFileGenerator implements ICSharpFileGenerator {
-	public generateBasePluginClass(config: PluginConfig): File {
+export default class BasePluginGenerator implements IFileGenerator {
+	generate(config: PluginConfig): File {
 		const className = config.base.pluginName + 'Plugin';
 		return new File(className, 'cs', [], this.generateBasePluginClassContent(config, className));
-	}
-
-	public generatePluginDefaultsClass(config: PluginConfig): File {
-		const className = config.base.pluginName + 'Defaults';
-		return new File(className, 'cs', [], this.generatePluginDefaultsClassContent(config, className));
-	}
-
-	protected generatePluginDefaultsClassContent(config: PluginConfig, className: string): string {
-		const defaultsClass = new Class(config.base.nameSpace, className, false, false);
-
-		defaultsClass.addField(new Field(Visibility.Public, 'SystemName', 'string', `"${config.details.systemName}"`, true, false), false);
-
-		return defaultsClass.toString();
 	}
 
 	protected generateBasePluginClassContent(config: PluginConfig, className: string): string {

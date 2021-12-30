@@ -2,9 +2,10 @@ import { File } from '$lib/scripts/common/File';
 import { Intend } from '$lib/csharp/common/Defaults';
 import { generateDllFileName } from '$lib/scripts/common/FilePathName';
 import type PluginConfig from '$lib/scripts/common/configs/PluginConfig';
+import type IFileGenerator from '../../IFileGenerator';
 
-export default class JsonFileGenerator {
-	generatePluginsJsonFile(config: PluginConfig): File {
+export default class PluginJsonGenerator implements IFileGenerator {
+	generate(config: PluginConfig): File {
 		return new File('plugin', 'json', [], JSON.stringify(this.generatePluginsJsonContent(config), null, Intend));
 	}
 

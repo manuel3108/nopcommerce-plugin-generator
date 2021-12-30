@@ -159,6 +159,10 @@
 		<button on:click={downloadPlugin} class="button is-primary">Download Plugin As Zip</button>
 		<button on:click={downloadConfig} class="button is-primary">Download Config</button>
 	</div>
+	<p>After you have extracted your plugin into the "Plugins" directory, make sure to execute the following command from within your terminal:</p>
+	<pre>
+		dotnet add project Plugins/{config.base.nameSpace}/{config.base.nameSpace}.csproj
+	</pre>
 </Box>
 
 <style>

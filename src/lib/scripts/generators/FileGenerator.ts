@@ -1,24 +1,25 @@
 import type { File } from '$lib/scripts/common/File';
-import { CsprojFileGenerator } from './4.40.x/CsprojFileGenerator';
 import type PluginConfig from '../common/configs/PluginConfig';
 import { Version } from '../common/Version';
-import type ICSharpFileGenerator from './interfaces/ICsharpFileGenerator';
-import type IJsonFileGenerator from './interfaces/IJsonFileGenerator';
+import { GeneratorLanguages } from './GeneratorLanguages';
+import type IFileGenerator from './IFileGenerator';
 
 export class FileGenerator {
 	private static readonly defaultModuleVersion = Version.v4_40_x;
 
 	static async generate(config: PluginConfig): Promise<File[]> {
 		const files: File[] = [];
-		console.log(config.base.nopCommerceVersion);
+		const version = config.base.nopCommerceVersion;
 
-		const csFileGenerator = await this.loadModule<ICSharpFileGenerator>(config.base.nopCommerceVersion, 'CSharpFileGenerator');
-		const jsonFileGenerator = await this.loadModule<IJsonFileGenerator>(config.base.nopCommerceVersion, 'JsonFileGenerator');
+		const basePlugin = await this.loadModule(version, GeneratorLanguages.CSHARP, 'BasePluginGenerator');
+		const pluginDefaults = await this.loadModule(version, GeneratorLanguages.CSHARP, 'PluginDefaultsGenerator');
+		const pluginJson = await this.loadModule(version, GeneratorLanguages.JSON, 'PluginJsonGenerator');
+		const projectFile = await this.loadModule(version, GeneratorLanguages.CSPROJ, 'ProjectFileGenerator');
 
-		files.push(jsonFileGenerator.generatePluginsJsonFile(config));
-		files.push(CsprojFileGenerator.generateProjectFile(config));
-		files.push(csFileGenerator.generateBasePluginClass(config));
-		files.push(csFileGenerator.generatePluginDefaultsClass(config));
+		files.push(pluginJson.generate(config));
+		files.push(projectFile.generate(config));
+		files.push(basePlugin.generate(config));
+		files.push(pluginDefaults.generate(config));
 
 		FileGenerator.updateFileIds(files);
 
@@ -31,18 +32,18 @@ export class FileGenerator {
 		});
 	}
 
-	private static async loadModule<T>(version: string, moduleName: string): Promise<T> {
+	private static async loadModule(version: string, language: GeneratorLanguages, moduleName: string): Promise<IFileGenerator> {
 		try {
 			// load module
-			const module = await import(`./${version}/${moduleName}.ts`).catch(); // default catch to avoid logging exceptions into console
+			const module = await import(`./${version}/${language}/${moduleName}.ts`).catch(); // default catch to avoid logging exceptions into developer console
 
 			// convert to typed module
-			const typedModule = new module.default() as T;
+			const typedModule = new module.default() as IFileGenerator;
 			return typedModule;
 		} catch (error) {
 			// module not found, use default module
 			if (version != this.defaultModuleVersion) {
-				return await this.loadModule(this.defaultModuleVersion, moduleName);
+				return await this.loadModule(this.defaultModuleVersion, language, moduleName);
 			}
 		}
 	}

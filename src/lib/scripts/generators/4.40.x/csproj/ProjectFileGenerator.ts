@@ -1,8 +1,9 @@
 import type PluginConfig from '$lib/scripts/common/configs/PluginConfig';
 import { File } from '$lib/scripts/common/File';
+import type IFileGenerator from '../../IFileGenerator';
 
-export class CsprojFileGenerator {
-	static generateProjectFile(config: PluginConfig): File {
+export default class ProjectFileGenerator implements IFileGenerator {
+	generate(config: PluginConfig): File {
 		return new File(
 			config.base.nameSpace,
 			'csproj',
