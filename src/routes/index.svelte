@@ -3,8 +3,7 @@
 	import InputField from '$lib/components/common/InputField.svelte';
 	import Monaco from '$lib/components/Monaco.svelte';
 	import TreeView from '$lib/components/TreeView.svelte';
-	import { FileGenerator as FileGenerator4_40_x } from '$lib/scripts/4.40.x/FileGenerator';
-	import { FileGenerator as FileGenerator4_50_x } from '$lib/scripts/4.50.x/FileGenerator';
+	import { FileGenerator } from '$lib/scripts/generators/FileGenerator';
 	import type { File } from '$lib/scripts/common/File';
 	import { TreeNode, filesToTreeNodes, orderTree } from '$lib/scripts/common/FileTree';
 	import { Version } from '$lib/scripts/common/Version';
@@ -17,6 +16,8 @@
 	import { Intend } from '$lib/csharp/common/Defaults';
 	import PluginImageUpload from '$lib/components/PluginImageUpload.svelte';
 	import { onMount } from 'svelte';
+	import CheckboxField from '$lib/components/common/CheckboxField.svelte';
+	import SettingProperties from '$lib/components/SettingProperties.svelte';
 
 	let config = new PluginConfig();
 	config.base.pluginName = 'FancyPdf';
@@ -25,6 +26,7 @@
 	config.details.author = 'Innovapps';
 	config.details.description = 'FancyPdf description';
 	config.details.group = PluginGroup.Misc;
+	config.settings.enabled = false;
 	let friendlyName: string;
 	let pluginVersion: string;
 	let systemName: string;
@@ -33,7 +35,7 @@
 
 	let activeCode = '';
 	let lastFileId = 0;
-	let pluginImageUrl;
+	let pluginImageUrl = '';
 	let isMounted = false;
 
 	let fileTree: TreeNode = {
@@ -56,18 +58,21 @@
 			config.details.systemName = systemName || config.details.group + '.' + config.base.pluginName;
 			config.details.pluginImage = pluginImageUrl;
 
-			if (config.base.nopCommerceVersion === Version.v4_40_x) files = FileGenerator4_40_x.generate(config);
-			else if (config.base.nopCommerceVersion === Version.v4_50_x) files = FileGenerator4_50_x.generate(config);
-
-			const childNodes = filesToTreeNodes(files);
-
-			fileTree.children = childNodes;
-			fileTree.fileName = config.base.nameSpace;
-
-			fileTree = orderTree(fileTree);
-
-			openFile(lastFileId);
+			generateFiles();
 		}
+	}
+
+	async function generateFiles() {
+		files = await FileGenerator.generate(config);
+
+		const childNodes = filesToTreeNodes(files);
+
+		fileTree.children = childNodes;
+		fileTree.fileName = config.base.nameSpace;
+
+		fileTree = orderTree(fileTree);
+
+		openFile(lastFileId);
 	}
 
 	function downloadPlugin() {
@@ -124,6 +129,13 @@
 	<InputField name="Version" bind:value={pluginVersion} placeholder={pluginVersionDefault} />
 	<InputField name="System name" bind:value={systemName} placeholder={config.details.group + '.' + config.base.pluginName} />
 	<PluginImageUpload bind:url={pluginImageUrl} />
+</Box>
+
+<Box title="Settings">
+	<CheckboxField name="Generate Settings" bind:value={config.settings.enabled} />
+	{#if config.settings.enabled}
+		<SettingProperties bind:properties={config.settings.properties} />
+	{/if}
 </Box>
 
 <hr />

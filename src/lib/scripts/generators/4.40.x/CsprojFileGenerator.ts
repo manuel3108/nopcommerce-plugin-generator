@@ -1,5 +1,5 @@
-import type PluginConfig from '../common/configs/PluginConfig';
-import { File } from '../common/File';
+import type PluginConfig from '$lib/scripts/common/configs/PluginConfig';
+import { File } from '$lib/scripts/common/File';
 
 export class CsprojFileGenerator {
 	static generateProjectFile(config: PluginConfig): File {
