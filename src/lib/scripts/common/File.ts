@@ -1,6 +1,6 @@
 export class File {
 	private name: string;
-	private extension: string;
+	readonly extension: string;
 	public content: string;
 	private path: string[];
 	public id: number;

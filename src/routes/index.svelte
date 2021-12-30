@@ -18,6 +18,7 @@
 	import { onMount } from 'svelte';
 	import CheckboxField from '$lib/components/common/CheckboxField.svelte';
 	import SettingProperties from '$lib/components/SettingProperties.svelte';
+	import SplitPane from '$lib/components/common/SplitPane.svelte';
 
 	let config = new PluginConfig();
 	config.base.pluginName = 'FancyPdf';
@@ -33,7 +34,7 @@
 
 	let pluginVersionDefault = '1.0.0';
 
-	let activeCode = '';
+	let activeFile: File;
 	let lastFileId = 0;
 	let pluginImageUrl = '';
 	let isMounted = false;
@@ -103,7 +104,7 @@
 
 	function openFile(fileId) {
 		lastFileId = fileId;
-		activeCode = files[fileId].content;
+		activeFile = files[fileId];
 	}
 
 	function downloadConfig() {
@@ -141,15 +142,14 @@
 <hr />
 
 <Box title="Preview (binary files not shown)">
-	<div class="split-view">
-		<div class="files">
-			<TreeView bind:tree={fileTree} callback={openFile} />
-		</div>
-
-		<div class="editor">
-			<CodeBlock code={activeCode} />
-		</div>
-	</div>
+	<SplitPane leftInitialSize="25%">
+		<svelte:fragment slot="left">
+			<TreeView bind:tree={fileTree} callback={openFile} activeFileId={lastFileId} />
+		</svelte:fragment>
+		<svelte:fragment slot="right">
+			<CodeBlock file={activeFile} />
+		</svelte:fragment>
+	</SplitPane>
 </Box>
 
 <hr />
@@ -164,22 +164,3 @@
 		dotnet add project Plugins/{config.base.nameSpace}/{config.base.nameSpace}.csproj
 	</pre>
 </Box>
-
-<style>
-	.split-view {
-		display: flex;
-	}
-
-	.split-view div {
-		display: block;
-	}
-
-	.files {
-		width: 20%;
-		overflow: auto;
-	}
-
-	.editor {
-		width: 80%;
-	}
-</style>
