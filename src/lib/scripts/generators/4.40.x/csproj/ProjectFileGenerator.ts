@@ -1,4 +1,4 @@
-import type PluginConfig from '$lib/scripts/common/configs/PluginConfig';
+import type PluginConfig from '$lib/scripts/configs/PluginConfig';
 import { File } from '$lib/scripts/common/File';
 import type IFileGenerator from '../../IFileGenerator';
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { SettingProperty } from '$lib/scripts/common/configs/PluginSettingsConfig';
+	import { SettingProperty } from '$lib/scripts/configs/PluginSettingsConfig';
 	import { DataTypes } from '$lib/scripts/common/DataTypes';
 	import Variable from './common/Variable.svelte';
 

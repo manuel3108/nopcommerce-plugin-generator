@@ -7,13 +7,13 @@
 	import type { File } from '$lib/scripts/common/File';
 	import { TreeNode, filesToTreeNodes, orderTree } from '$lib/scripts/common/FileTree';
 	import { Version } from '$lib/scripts/common/Version';
-	import PluginConfig from '$lib/scripts/common/configs/PluginConfig';
+	import PluginConfig from '$lib/scripts/configs/PluginConfig';
 	import Box from '$lib/components/common/Box.svelte';
 	import { PluginGroup } from '$lib/scripts/common/PluginGroup';
 	import PluginGroupSelector from '$lib/components/PluginGroupSelector.svelte';
 	import JSZip from 'jszip';
 	import saveAs from 'file-saver';
-	import { Intend } from '$lib/csharp/common/Defaults';
+	import { Intend } from '$lib/scripts/csharp-lib/common/Defaults';
 	import PluginImageUpload from '$lib/components/PluginImageUpload.svelte';
 	import { onMount } from 'svelte';
 	import CheckboxField from '$lib/components/common/CheckboxField.svelte';

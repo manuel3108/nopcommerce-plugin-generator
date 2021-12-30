@@ -1,7 +1,7 @@
 import { File } from '$lib/scripts/common/File';
-import { Intend } from '$lib/csharp/common/Defaults';
+import { Intend } from '$lib/scripts/csharp-lib/common/Defaults';
 import { generateDllFileName } from '$lib/scripts/common/FilePathName';
-import type PluginConfig from '$lib/scripts/common/configs/PluginConfig';
+import type PluginConfig from '$lib/scripts/configs/PluginConfig';
 import type IFileGenerator from '../../IFileGenerator';
 
 export default class PluginJsonGenerator implements IFileGenerator {

@@ -1,5 +1,5 @@
 import type { File } from '$lib/scripts/common/File';
-import type PluginConfig from '../common/configs/PluginConfig';
+import type PluginConfig from '../configs/PluginConfig';
 import { Version } from '../common/Version';
 import { GeneratorLanguages } from './GeneratorLanguages';
 import type IFileGenerator from './IFileGenerator';

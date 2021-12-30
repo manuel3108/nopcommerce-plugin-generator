@@ -1,10 +1,10 @@
-import Class from '$lib/csharp/base/Class';
-import Field from '$lib/csharp/base/Field';
-import Method from '$lib/csharp/base/Method';
-import { Using } from '$lib/csharp/base/Using';
-import { Visibility } from '$lib/csharp/base/Visibility';
-import { FieldPrefix } from '$lib/csharp/common/Defaults';
-import type PluginConfig from '$lib/scripts/common/configs/PluginConfig';
+import Class from '$lib/scripts/csharp-lib/base/Class';
+import Field from '$lib/scripts/csharp-lib/base/Field';
+import Method from '$lib/scripts/csharp-lib/base/Method';
+import { Using } from '$lib/scripts/csharp-lib/base/Using';
+import { Visibility } from '$lib/scripts/csharp-lib/base/Visibility';
+import { FieldPrefix } from '$lib/scripts/csharp-lib/common/Defaults';
+import type PluginConfig from '$lib/scripts/configs/PluginConfig';
 import { File } from '$lib/scripts/common/File';
 import type IFileGenerator from '../../IFileGenerator';
 

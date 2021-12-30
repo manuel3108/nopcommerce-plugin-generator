@@ -1,5 +1,5 @@
 import PluginJsonGenerator4_40_x from '../../4.40.x/json/PluginJsonGenerator';
-import type PluginConfig from '../../../common/configs/PluginConfig';
+import type PluginConfig from '../../../configs/PluginConfig';
 
 export default class PluginJsonGenerator extends PluginJsonGenerator4_40_x {
 	override generatePluginsJsonContent(config: PluginConfig): Record<string, unknown> {
