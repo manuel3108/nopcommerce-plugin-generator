@@ -1,4 +1,6 @@
+import { LineBreak } from '../../common/Defaults';
 import { getIntend } from '../common/Helper';
+import type FieldAttribute from './FieldAttribute';
 import type { Visibility } from './Visibility';
 
 interface FieldConfig {
@@ -6,30 +8,56 @@ interface FieldConfig {
 	isConstant: boolean;
 	isReadonly: boolean;
 	hasGetterAndSetter: boolean;
+	attribute?: FieldAttribute;
+	additionalNewLine: boolean;
 }
 
 export default class Field {
 	private readonly visibility: Visibility;
-	private readonly isConstant: boolean;
-	private readonly isReadonly: boolean;
-	private readonly hasGetterAndSetter: boolean;
 	readonly name: string;
 	readonly type: string;
-	readonly value: string;
+	readonly options: FieldConfig;
 
 	constructor(visibility: Visibility, name: string, type: string, options: FieldConfig) {
 		this.visibility = visibility;
 		this.name = name;
 		this.type = type;
-		this.value = options.value;
-		this.isConstant = options.isConstant;
-		this.isReadonly = options.isReadonly;
-		this.hasGetterAndSetter = options.hasGetterAndSetter;
+		this.options = options;
 	}
 
 	public toString(baseIntend: number): string {
-		return `${getIntend(baseIntend)}${this.visibility}${this.isConstant ? ' const' : ''}${this.isReadonly ? ' readonly' : ''} ${this.type} ${
-			this.name
-		}${this.value ? ' = ' + this.value : ''}${this.hasGetterAndSetter ? ' { get; set; }' : ';'}`;
+		let result = '';
+
+		if (this.options.attribute) {
+			result += getIntend(baseIntend) + this.options.attribute.toString() + LineBreak;
+		}
+
+		result += `${getIntend(baseIntend)}${this.visibility}`;
+
+		if (this.options.isConstant) {
+			result += ' const';
+		}
+
+		if (this.options.isReadonly) {
+			result += ' readonly';
+		}
+
+		result += ` ${this.type} ${this.name}`;
+
+		if (this.options.value) {
+			result += ` = ${this.options.value}`;
+		}
+
+		if (this.options.hasGetterAndSetter) {
+			result += ` { get; set; }`;
+		} else {
+			result += ';';
+		}
+
+		if (this.options.additionalNewLine) {
+			result += LineBreak;
+		}
+
+		return result;
 	}
 }

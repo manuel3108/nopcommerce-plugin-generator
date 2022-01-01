@@ -13,21 +13,16 @@
 	import PluginGroupSelector from '$lib/components/PluginGroupSelector.svelte';
 	import JSZip from 'jszip';
 	import saveAs from 'file-saver';
-	import { Intend } from '$lib/scripts/csharp-lib/common/Defaults';
+	import { Intend } from '$lib/scripts/common/Defaults';
 	import PluginImageUpload from '$lib/components/PluginImageUpload.svelte';
 	import { onMount } from 'svelte';
 	import CheckboxField from '$lib/components/common/CheckboxField.svelte';
 	import SettingProperties from '$lib/components/SettingProperties.svelte';
 	import SplitPane from '$lib/components/common/SplitPane.svelte';
+	import PluginConfigUpload from '$lib/components/PluginConfigUpload.svelte';
+	import FormField from '$lib/components/common/FormField.svelte';
 
 	let config = new PluginConfig();
-	config.base.pluginName = 'FancyPdf';
-	config.base.nameSpace = 'Innovapps.Nop.Plugin.Misc.FancyPdf';
-	config.base.nopCommerceVersion = Version.v4_40_x;
-	config.details.author = 'Innovapps';
-	config.details.description = 'FancyPdf description';
-	config.details.group = PluginGroup.Misc;
-	config.settings.enabled = false;
 	let friendlyName: string;
 	let pluginVersion: string;
 	let systemName: string;
@@ -38,6 +33,7 @@
 	let lastFileId = 0;
 	let pluginImageUrl = '';
 	let isMounted = false;
+	const fileExtension = '.nopgen-config';
 
 	let fileTree: TreeNode = {
 		children: [],
@@ -109,14 +105,31 @@
 
 	function downloadConfig() {
 		const configJson = JSON.stringify(config, null, Intend);
-		saveAs(new Blob([configJson], { type: 'application/json' }), 'config.json');
+		saveAs(new Blob([configJson], { type: 'application/json' }), config.base.nameSpace + fileExtension);
+	}
+
+	function openDemoConfig() {
+		config.base.pluginName = 'MyTestPlugin';
+		config.base.nameSpace = 'Innovapps.Nop.Plugin.Misc.MyTestPlugin';
+		config.base.nopCommerceVersion = Version.v4_40_x;
+		config.details.author = 'Innovapps';
+		config.details.description = 'MyTestPlugin description';
+		config.details.group = PluginGroup.Misc;
+		config.settings.enabled = false;
 	}
 </script>
 
 <h1 class="title">NopCommerce Plugin Generator</h1>
 <h2 class="subtitle">some description about the goal of this project</h2>
 
-<Box title="Base config">
+<Box title="Import">
+	<PluginConfigUpload bind:config {fileExtension} />
+	<FormField name="Or import existing config" required={false}>
+		<button on:click={openDemoConfig} class="button is-primary">Load configuration template</button>
+	</FormField>
+</Box>
+
+<Box title="Base configuration">
 	<VersionSelector bind:version={config.base.nopCommerceVersion} />
 	<PluginGroupSelector bind:group={config.details.group} />
 	<InputField name="Plugin Name" bind:value={config.base.pluginName} />

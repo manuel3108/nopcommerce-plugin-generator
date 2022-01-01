@@ -1,7 +1,7 @@
 import ClassBase from './ClassBase';
 
-export default class Class extends ClassBase {
+export default class Record extends ClassBase {
 	constructor(namespace: string, name: string, addRegions = true, addCtor = true) {
-		super('class', namespace, name, addRegions, addCtor);
+		super('record', namespace, name, addRegions, addCtor);
 	}
 }

@@ -16,3 +16,9 @@
 {/each}
 
 <button class="button is-primary mt-3" on:click={addSetting}>Add Setting</button>
+
+<style>
+	button {
+		width: 100%;
+	}
+</style>

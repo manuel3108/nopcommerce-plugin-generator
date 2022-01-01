@@ -1,4 +1,4 @@
-import { LineBreak } from '../common/Defaults';
+import { LineBreak } from '../../common/Defaults';
 import { getIntend } from '../common/Helper';
 import type { Parameter } from './Parameter';
 import type { Visibility } from './Visibility';
@@ -12,13 +12,7 @@ export default class Method {
 	parameters: Parameter[];
 	expressions: string[];
 
-	constructor(
-		visibility: Visibility,
-		name: string,
-		override = false,
-		async = true,
-		returnType = 'Task'
-	) {
+	constructor(visibility: Visibility, name: string, override = false, async = true, returnType = 'Task') {
 		this.visibility = visibility;
 		this.name = name;
 		this.parameters = [];
@@ -30,11 +24,9 @@ export default class Method {
 	}
 
 	public toString(baseIntend: number): string {
-		return `${getIntend(baseIntend)}${this.visibility}${this.override ? ' override' : ''}${
-			this.async ? ' async' : ''
-		}${this.returnType ? ' ' + this.returnType : ''} ${this.name}(${this.parameters
-			.map((parameter) => parameter.toString())
-			.join(', ')}) {
+		return `${getIntend(baseIntend)}${this.visibility}${this.override ? ' override' : ''}${this.async ? ' async' : ''}${
+			this.returnType ? ' ' + this.returnType : ''
+		} ${this.name}(${this.parameters.map((parameter) => parameter.toString()).join(', ')}) {
 ${this.expressions.map((expression) => `${getIntend(baseIntend + 1)}${expression}`).join(LineBreak)}
 ${getIntend(baseIntend)}}`;
 	}
