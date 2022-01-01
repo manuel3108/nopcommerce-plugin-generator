@@ -21,8 +21,10 @@
 	import SplitPane from '$lib/components/common/SplitPane.svelte';
 	import PluginConfigUpload from '$lib/components/PluginConfigUpload.svelte';
 	import FormField from '$lib/components/common/FormField.svelte';
+	import { SettingProperty } from '$lib/scripts/configs/PluginSettingsConfig';
+	import { DataTypes } from '$lib/scripts/common/DataTypes';
 
-	let config = new PluginConfig();
+	let config: PluginConfig = new PluginConfig();
 	let friendlyName: string;
 	let pluginVersion: string;
 	let systemName: string;
@@ -115,7 +117,8 @@
 		config.details.author = 'Innovapps';
 		config.details.description = 'MyTestPlugin description';
 		config.details.group = PluginGroup.Misc;
-		config.settings.enabled = false;
+		config.settings.enabled = true;
+		config.settings.properties.push(new SettingProperty('MyTestInteger', DataTypes.Integer));
 	}
 </script>
 

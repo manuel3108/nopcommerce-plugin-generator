@@ -55,7 +55,7 @@ export default class ClassBase {
 		// fields
 		if (this.addRegions) result += `${LineBreak}${getIntend(baseIntend + 1)}#region Fields${LineBreak}${LineBreak}`;
 		result += this.fields.map((field) => field.toString(baseIntend + 1)).join(LineBreak) + LineBreak;
-		if (this.addRegions) result += `${LineBreak}${getIntend(baseIntend + 1)}#endregion${LineBreak}`;
+		if (this.addRegions) result += LineBreak + `${getIntend(baseIntend + 1)}#endregion${LineBreak}`;
 
 		// constructor
 		if (this.myConstructor) {
@@ -66,7 +66,7 @@ export default class ClassBase {
 
 		// methods
 		if (this.addRegions) result += `${LineBreak}${getIntend(baseIntend + 1)}#region Methods${LineBreak}${LineBreak}`;
-		result += this.methods.map((method) => method.toString(baseIntend + 1)).join(LineBreak + LineBreak) + LineBreak;
+		if (this.methods.length > 0) result += this.methods.map((method) => method.toString(baseIntend + 1)).join(LineBreak + LineBreak) + LineBreak;
 		if (this.addRegions) result += `${LineBreak}${getIntend(baseIntend + 1)}#endregion${LineBreak}`;
 
 		// footer

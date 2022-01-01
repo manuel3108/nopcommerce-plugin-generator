@@ -15,9 +15,6 @@ export default class PluginSettingsConfig {
 
 	constructor() {
 		this.properties = [];
-
-		// add default property
-		this.properties.push(new SettingProperty('', DataTypes.Integer));
 	}
 
 	enabled: boolean;

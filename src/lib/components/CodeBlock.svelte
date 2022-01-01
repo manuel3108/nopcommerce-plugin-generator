@@ -59,6 +59,7 @@
 		word-wrap: normal;
 		white-space: pre;
 		margin: 0;
+		background-color: #1e1e1e;
 	}
 
 	pre :global(.namespace) {

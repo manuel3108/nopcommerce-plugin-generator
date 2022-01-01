@@ -17,7 +17,7 @@ export default class PluginSettingsGenerator implements IFileGenerator {
 	}
 
 	protected generateContent(config: PluginConfig, className: string, filePath: string[]): string {
-		const settingsClass = new Class(generateClassNamespace(config.base.nameSpace, filePath), className, false, true);
+		const settingsClass = new Class(generateClassNamespace(config.base.nameSpace, filePath), className, true, true);
 		settingsClass.inheritsFrom = 'BaseController';
 
 		settingsClass.usings.push(new Using('Nop.Web.Framework.Controllers'));
