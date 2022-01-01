@@ -8,18 +8,18 @@
 
 		
 
-		<link rel="modulepreload" href="/_app/start-bcb30ba1.js">
+		<link rel="modulepreload" href="/_app/start-51a8792f.js">
 		<link rel="modulepreload" href="/_app/chunks/vendor-83d19bf2.js">
 		<link rel="modulepreload" href="/_app/chunks/preload-helper-ec9aa979.js">
 		<link rel="modulepreload" href="/_app/pages/__layout.svelte-ebb5374b.js">
-		<link rel="modulepreload" href="/_app/pages/index.svelte-a0fcac1c.js">
-		<link rel="modulepreload" href="/_app/chunks/index-4e721ff7.js">
+		<link rel="modulepreload" href="/_app/pages/index.svelte-359f74b5.js">
+		<link rel="modulepreload" href="/_app/chunks/index-21292ce4.js">
 		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
 		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-91cc2d9b.css">
-		<link rel="stylesheet" href="/_app/assets/index-80f7f83b.css">
+		<link rel="stylesheet" href="/_app/assets/index-634be103.css">
 
 		<script type="module">
-			import { start } from "/_app/start-bcb30ba1.js";
+			import { start } from "/_app/start-51a8792f.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"","assets":""},
@@ -33,7 +33,7 @@
 					error: null,
 					nodes: [
 						import("/_app/pages/__layout.svelte-ebb5374b.js"),
-						import("/_app/pages/index.svelte-a0fcac1c.js")
+						import("/_app/pages/index.svelte-359f74b5.js")
 					],
 					page: {
 						host: location.host, // TODO this is redundant
@@ -59,8 +59,26 @@
 <main class="svelte-10hoedr"><h1 class="title">NopCommerce Plugin Generator</h1>
 <h2 class="subtitle">some description about the goal of this project</h2>
 
-<div class="box"><h3 class="subtitle">Base config</h3>
-	<div class="field"><span class="label svelte-8zof6q">NopCommerce Version
+<div class="box"><div class="is-flex is-flex-direction-row"><div class="is-flex-grow-1"><h3 class="subtitle">Import</h3></div>
+		<div><button class="button is-primary is-small svelte-1j439ea">Hide</button></div></div>
+
+	<div><div class="field"><span class="label svelte-8zof6q">Upload existing plugin config
+
+		</span>
+	<div class="control svelte-8zof6q"><div class="file"><label class="file-label svelte-s4ymqk"><input class="file-input" name="resume" type="file" accept=".nopgen-config">
+			<span class="file-cta"><span class="file-label svelte-s4ymqk">Choose a file… </span></span></label></div></div>
+</div>
+	<div class="field"><span class="label svelte-8zof6q">Or import existing config
+
+		</span>
+	<div class="control svelte-8zof6q"><button class="button is-primary">Load configuration template</button></div>
+</div></div>
+</div>
+
+<div class="box"><div class="is-flex is-flex-direction-row"><div class="is-flex-grow-1"><h3 class="subtitle">Base configuration</h3></div>
+		<div><button class="button is-primary is-small svelte-1j439ea">Hide</button></div></div>
+
+	<div><div class="field"><span class="label svelte-8zof6q">NopCommerce Version
 
 		<span class="required"> *</span></span>
 	<div class="control svelte-8zof6q"><select><option value="4.40.x">4.40.x</option><option value="4.50.x">4.50.x</option></select></div>
@@ -73,29 +91,32 @@
 	<div class="field"><span class="label svelte-8zof6q">Plugin Name
 
 		<span class="required"> *</span></span>
-	<div class="control svelte-8zof6q"><input type="text" placeholder="" value="FancyPdf"></div>
+	<div class="control svelte-8zof6q"><input type="text" placeholder="" value=""></div>
 </div>
 	<div class="field"><span class="label svelte-8zof6q">NameSpace
 
 		<span class="required"> *</span></span>
-	<div class="control svelte-8zof6q"><input type="text" placeholder="" value="Innovapps.Nop.Plugin.Misc.FancyPdf"></div>
+	<div class="control svelte-8zof6q"><input type="text" placeholder="" value=""></div>
 </div></div>
+</div>
 
-<div class="box"><h3 class="subtitle">Details</h3>
-	<div class="field"><span class="label svelte-8zof6q">Author
+<div class="box"><div class="is-flex is-flex-direction-row"><div class="is-flex-grow-1"><h3 class="subtitle">Details</h3></div>
+		<div><button class="button is-primary is-small svelte-1j439ea">Hide</button></div></div>
+
+	<div><div class="field"><span class="label svelte-8zof6q">Author
 
 		<span class="required"> *</span></span>
-	<div class="control svelte-8zof6q"><input type="text" placeholder="" value="Innovapps"></div>
+	<div class="control svelte-8zof6q"><input type="text" placeholder="" value=""></div>
 </div>
 	<div class="field"><span class="label svelte-8zof6q">Description
 
 		<span class="required"> *</span></span>
-	<div class="control svelte-8zof6q"><input type="text" placeholder="" value="FancyPdf description"></div>
+	<div class="control svelte-8zof6q"><input type="text" placeholder="" value=""></div>
 </div>
 	<div class="field"><span class="label svelte-8zof6q">Friendly name
 
-		</span>
-	<div class="control svelte-8zof6q"><input type="text" placeholder="FancyPdf" value=""></div>
+		<span class="required"> *</span></span>
+	<div class="control svelte-8zof6q"><input type="text" placeholder="" value=""></div>
 </div>
 	<div class="field"><span class="label svelte-8zof6q">Version
 
@@ -105,7 +126,7 @@
 	<div class="field"><span class="label svelte-8zof6q">System name
 
 		</span>
-	<div class="control svelte-8zof6q"><input type="text" placeholder="Misc.FancyPdf" value=""></div>
+	<div class="control svelte-8zof6q"><input type="text" placeholder="undefined." value=""></div>
 </div>
 	<div class="field"><span class="label svelte-8zof6q">Plugin logo
 
@@ -115,19 +136,25 @@
 </div>
 
 </div>
+</div>
 
-<div class="box"><h3 class="subtitle">Settings</h3>
-	<div class="field"><span class="label svelte-8zof6q is-checkbox">Generate Settings
+<div class="box"><div class="is-flex is-flex-direction-row"><div class="is-flex-grow-1"><h3 class="subtitle">Settings</h3></div>
+		<div><button class="button is-primary is-small svelte-1j439ea">Hide</button></div></div>
+
+	<div><div class="field"><span class="label svelte-8zof6q is-checkbox">Generate Settings
 
 		</span>
 	<div class="control svelte-8zof6q is-checkbox"><input type="checkbox"></div>
 </div>
 	</div>
+</div>
 
 <hr>
 
-<div class="box"><h3 class="subtitle">Preview (binary files not shown)</h3>
-	<div class="split-pane svelte-1tqp3vw"><div class="left svelte-1tqp3vw" style="flex-basis: 25%"><ul class="svelte-kmtmeo"><li class="svelte-kmtmeo"><div class="pointer svelte-kmtmeo"><span class="svelte-kmtmeo active"><span class="arrow svelte-kmtmeo arrowDown">▶</span>
+<div class="box"><div class="is-flex is-flex-direction-row"><div class="is-flex-grow-1"><h3 class="subtitle">Preview (binary files not shown)</h3></div>
+		<div><button class="button is-primary is-small svelte-1j439ea">Hide</button></div></div>
+
+	<div><div class="split-pane svelte-1tqp3vw"><div class="left svelte-1tqp3vw" style="flex-basis: 25%"><ul class="svelte-kmtmeo"><li class="svelte-kmtmeo"><div class="pointer svelte-kmtmeo"><span class="svelte-kmtmeo active"><span class="arrow svelte-kmtmeo arrowDown">▶</span>
 					root</span>
 				</div></li>
 </ul></div>
@@ -136,15 +163,19 @@
 </pre>
 		</div>
 </div></div>
+</div>
 
 <hr>
 
-<div class="box"><h3 class="subtitle">Downloads</h3>
-	<div><button class="button is-primary">Download Plugin As Zip</button>
+<div class="box"><div class="is-flex is-flex-direction-row"><div class="is-flex-grow-1"><h3 class="subtitle">Downloads</h3></div>
+		<div><button class="button is-primary is-small svelte-1j439ea">Hide</button></div></div>
+
+	<div><div><button class="button is-primary">Download Plugin As Zip</button>
 		<button class="button is-primary">Download Config</button></div>
 	<p>After you have extracted your plugin into the &quot;Plugins&quot; directory, make sure to execute the following command from within your terminal:</p>
-	<pre>dotnet add project Plugins/Innovapps.Nop.Plugin.Misc.FancyPdf/Innovapps.Nop.Plugin.Misc.FancyPdf.csproj
+	<pre>dotnet add project Plugins//.csproj
 	</pre></div>
+</div>
 </main>
 
 
