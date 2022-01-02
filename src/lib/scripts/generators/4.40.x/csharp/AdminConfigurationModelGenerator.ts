@@ -19,11 +19,13 @@ export default class PluginSettingsGenerator implements IFileGenerator {
 	}
 
 	protected generateContent(config: PluginConfig, className: string, filePath: string[]): string {
-		const settingsClass = new Record(generateClassNamespace(config.base.nameSpace, filePath), className, false, false);
+		const settingsClass = new Record(generateClassNamespace(config.base.nameSpace, filePath), className, {
+			addCtor: false,
+			addRegions: false
+		});
 		settingsClass.inheritsFrom = 'BaseNopModel';
 		settingsClass.usings.push(new Using('Nop.Web.Framework.Mvc.ModelBinding'));
 		settingsClass.usings.push(new Using('Nop.Web.Framework.Models'));
-		settingsClass.usings.push(new Using('Microsoft.AspNetCore.Mvc.Rendering'));
 
 		// add store scope
 		settingsClass.addField(

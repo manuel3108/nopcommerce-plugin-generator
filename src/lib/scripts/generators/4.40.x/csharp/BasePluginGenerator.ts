@@ -9,6 +9,7 @@ import { File } from '$lib/scripts/common/File';
 import type IFileGenerator from '../../IFileGenerator';
 import { getLanguageResource } from '../../LanguageResourceSingleton';
 import { getIntend } from '$lib/scripts/csharp-lib/common/Helper';
+import { DataTypes } from '$lib/scripts/common/DataTypes';
 
 export default class BasePluginGenerator implements IFileGenerator {
 	generate(config: PluginConfig): File {
@@ -17,7 +18,10 @@ export default class BasePluginGenerator implements IFileGenerator {
 	}
 
 	protected generateBasePluginClassContent(config: PluginConfig, className: string): string {
-		const pluginClass = new Class(config.base.nameSpace, className);
+		const pluginClass = new Class(config.base.nameSpace, className, {
+			addCtor: true,
+			addRegions: true
+		});
 
 		pluginClass.usings.push(new Using('Nop.Services.Plugins'));
 		pluginClass.usings.push(new Using('System.Threading.Tasks'));
@@ -38,14 +42,22 @@ export default class BasePluginGenerator implements IFileGenerator {
 	}
 
 	protected generateBasePluginClassUninstallMethod(pluginClass: Class): void {
-		const uninstallAsync = new Method(Visibility.Public, 'UninstallAsync', true);
+		const uninstallAsync = new Method(Visibility.Public, 'UninstallAsync', {
+			override: true,
+			async: true,
+			returnType: 'Task'
+		});
 		pluginClass.methods.push(uninstallAsync);
 
 		uninstallAsync.expressions.push(`await base.UninstallAsync();`);
 	}
 
 	protected generateBasePluginClassInstallMethod(config: PluginConfig, pluginClass: Class): void {
-		const installAsync = new Method(Visibility.Public, 'InstallAsync', true);
+		const installAsync = new Method(Visibility.Public, 'InstallAsync', {
+			override: true,
+			async: true,
+			returnType: 'Task'
+		});
 		pluginClass.methods.push(installAsync);
 
 		if (config.settings.enabled) {
@@ -104,9 +116,13 @@ export default class BasePluginGenerator implements IFileGenerator {
 			})
 		);
 
-		const getConfigurationPageUrl = new Method(Visibility.Public, 'GetConfigurationPageUrl', true, false, 'string');
+		const getConfigurationPageUrl = new Method(Visibility.Public, 'GetConfigurationPageUrl', {
+			override: true,
+			async: false,
+			returnType: DataTypes.String
+		});
 		pluginClass.methods.push(getConfigurationPageUrl);
 
-		getConfigurationPageUrl.expressions.push(`return $"{_webHelper.GetStoreLocation()}Admin/${config.base.pluginName}/Configure";`);
+		getConfigurationPageUrl.expressions.push(`return $"{_webHelper.GetStoreLocation()}Admin/${config.base.pluginName}Configuration/Configure";`);
 	}
 }

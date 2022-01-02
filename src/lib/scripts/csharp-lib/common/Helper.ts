@@ -9,9 +9,9 @@ export function getIntend(intend: number): string {
 }
 
 export function generateClassNamespace(baseNamespace: string, path: string[]) {
-	let result = baseNamespace;
-	path.forEach((item) => {
-		result += '.' + item;
-	});
-	return result;
+	return baseNamespace + '.' + path.join('.');
+}
+
+export function convertPathToString(path: string[]): string {
+	return path.join('\\');
 }

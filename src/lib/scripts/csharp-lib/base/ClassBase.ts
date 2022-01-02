@@ -1,5 +1,6 @@
 import { FieldPrefix, LineBreak } from '../../common/Defaults';
 import { getIntend } from '../common/Helper';
+import type ClassBaseOptions from './ClassBaseOptions';
 import type Field from './Field';
 import Method from './Method';
 import { Parameter } from './Parameter';
@@ -11,24 +12,28 @@ export default class ClassBase {
 	private name: string;
 	private myConstructor: Method;
 	private fields: Field[] = [];
-	private addRegions: boolean;
+	private options: ClassBaseOptions;
 	methods: Method[];
 	usings: Using[];
 	inheritsFrom: string;
 	type: string;
 
-	constructor(type: string, namespace: string, name: string, addRegions = true, addCtor = true) {
+	constructor(type: string, namespace: string, name: string, options: ClassBaseOptions) {
 		this.type = type;
 		this.namespace = namespace;
 		this.name = name;
-		this.addRegions = addRegions;
+		this.options = options;
 
 		this.usings = [];
 		this.methods = [];
 		this.fields = [];
 
-		if (addCtor) {
-			this.myConstructor = new Method(Visibility.Public, name, false, false, null);
+		if (this.options.addCtor) {
+			this.myConstructor = new Method(Visibility.Public, name, {
+				override: false,
+				async: false,
+				returnType: null
+			});
 		}
 
 		this.usings.push(new Using('System'));
@@ -49,25 +54,33 @@ export default class ClassBase {
 
 		// header
 		let result = `${this.usings.map((using) => using.toString()).join(LineBreak)}${LineBreak}${LineBreak}`;
-		result += `namespace ${this.namespace} {${LineBreak}`;
-		result += `${getIntend(baseIntend)}public ${this.type} ${this.name} ${this.inheritsFrom ? `: ${this.inheritsFrom}` : ''} {${LineBreak}`;
+		result += `namespace ${this.namespace}${LineBreak}`;
+		result += `{${LineBreak}`;
+
+		// attributes
+		if (this.options.attributes) {
+			result += this.options.attributes.map((attribute) => getIntend(1) + attribute.toString()).join(LineBreak) + LineBreak;
+		}
+
+		result += `${getIntend(baseIntend)}public ${this.type} ${this.name} ${this.inheritsFrom ? `: ${this.inheritsFrom}` : ''}${LineBreak}`;
+		result += `${getIntend(baseIntend)}{${LineBreak}`;
 
 		// fields
-		if (this.addRegions) result += `${LineBreak}${getIntend(baseIntend + 1)}#region Fields${LineBreak}${LineBreak}`;
+		if (this.options.addRegions) result += `${getIntend(baseIntend + 1)}#region Fields${LineBreak}${LineBreak}`;
 		result += this.fields.map((field) => field.toString(baseIntend + 1)).join(LineBreak) + LineBreak;
-		if (this.addRegions) result += LineBreak + `${getIntend(baseIntend + 1)}#endregion${LineBreak}`;
+		if (this.options.addRegions) result += LineBreak + `${getIntend(baseIntend + 1)}#endregion${LineBreak}`;
 
 		// constructor
 		if (this.myConstructor) {
-			if (this.addRegions) result += `${LineBreak}${getIntend(baseIntend + 1)}#region Ctor${LineBreak}${LineBreak}`;
+			if (this.options.addRegions) result += `${LineBreak}${getIntend(baseIntend + 1)}#region Ctor${LineBreak}${LineBreak}`;
 			result += this.myConstructor.toString(baseIntend + 1) + LineBreak + LineBreak;
-			if (this.addRegions) result += `${getIntend(baseIntend + 1)}#endregion${LineBreak}`;
+			if (this.options.addRegions) result += `${getIntend(baseIntend + 1)}#endregion${LineBreak}`;
 		}
 
 		// methods
-		if (this.addRegions) result += `${LineBreak}${getIntend(baseIntend + 1)}#region Methods${LineBreak}${LineBreak}`;
+		if (this.options.addRegions) result += `${LineBreak}${getIntend(baseIntend + 1)}#region Methods${LineBreak}${LineBreak}`;
 		if (this.methods.length > 0) result += this.methods.map((method) => method.toString(baseIntend + 1)).join(LineBreak + LineBreak) + LineBreak;
-		if (this.addRegions) result += `${LineBreak}${getIntend(baseIntend + 1)}#endregion${LineBreak}`;
+		if (this.options.addRegions) result += `${LineBreak}${getIntend(baseIntend + 1)}#endregion${LineBreak}`;
 
 		// footer
 		result += `${getIntend(baseIntend)}}${LineBreak}`;

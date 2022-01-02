@@ -13,7 +13,10 @@ export default class PluginSettingsGenerator implements IFileGenerator {
 	}
 
 	protected generateContent(config: PluginConfig, className: string): string {
-		const settingsClass = new Class(config.base.nameSpace, className, false, false);
+		const settingsClass = new Class(config.base.nameSpace, className, {
+			addCtor: false,
+			addRegions: false
+		});
 
 		settingsClass.inheritsFrom = 'ISettings';
 		settingsClass.usings.push(new Using('Nop.Core.Configuration'));

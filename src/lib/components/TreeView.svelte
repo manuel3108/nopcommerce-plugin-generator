@@ -25,7 +25,7 @@
 	}
 </script>
 
-<ul transition:slide>
+<ul>
 	<li>
 		{#if tree.isDirectory}
 			<div class="pointer">
@@ -86,7 +86,6 @@
 	.pointer,
 	button {
 		color: grey;
-		padding: 0.25rem;
 		border-radius: 0.25rem;
 		text-align: left;
 	}

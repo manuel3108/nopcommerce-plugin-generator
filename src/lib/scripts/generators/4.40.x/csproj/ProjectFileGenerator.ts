@@ -1,6 +1,9 @@
 import type PluginConfig from '$lib/scripts/configs/PluginConfig';
 import { File } from '$lib/scripts/common/File';
 import type IFileGenerator from '../../IFileGenerator';
+import { getViews } from '../../ViewsSingleton';
+import { LineBreak } from '$lib/scripts/common/Defaults';
+import { getIntend } from '$lib/scripts/csharp-lib/common/Helper';
 
 export default class ProjectFileGenerator implements IFileGenerator {
 	generate(config: PluginConfig): File {
@@ -30,15 +33,26 @@ export default class ProjectFileGenerator implements IFileGenerator {
 <ItemGroup>
 	<None Remove="logo.png" />
 	<None Remove="plugin.json" />
+${getViews()
+	.map((view) => `${getIntend(1)}<None Remove="${view.fullPath}" />`)
+	.join(LineBreak)}
 </ItemGroup>
 
 <ItemGroup>
 	<Content Include="logo.png">
-	<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	</Content>
 	<Content Include="plugin.json">
-	<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	</Content>
+${getViews()
+	.map(
+		(view) =>
+			`${getIntend(1)}<Content Include="${view.fullPath}">
+${getIntend(2)}<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+${getIntend(1)}</Content>`
+	)
+	.join(LineBreak)}
 </ItemGroup>
 
 <ItemGroup>

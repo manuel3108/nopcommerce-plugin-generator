@@ -13,14 +13,18 @@ export default class PluginDefaultsGenerator implements IFileGenerator {
 	}
 
 	protected generatePluginDefaultsClassContent(config: PluginConfig, className: string): string {
-		const defaultsClass = new Class(config.base.nameSpace, className, false, false);
+		const defaultsClass = new Class(config.base.nameSpace, className, {
+			addCtor: false,
+			addRegions: false
+		});
 
 		defaultsClass.addField(
 			new Field(Visibility.Public, 'SystemName', DataTypes.String, {
 				value: `"${config.details.systemName}"`,
 				isConstant: true,
 				isReadonly: false,
-				hasGetterAndSetter: false
+				hasGetterAndSetter: false,
+				additionalNewLine: false
 			}),
 			false
 		);

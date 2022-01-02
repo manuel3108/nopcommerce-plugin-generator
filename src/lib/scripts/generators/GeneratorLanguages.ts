@@ -1,5 +1,6 @@
 export enum GeneratorLanguages {
 	CSHARP = 'csharp',
 	JSON = 'json',
-	CSPROJ = 'csproj'
+	CSPROJ = 'csproj',
+	CSHTML = 'cshtml'
 }

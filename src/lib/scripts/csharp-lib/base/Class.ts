@@ -1,7 +1,8 @@
 import ClassBase from './ClassBase';
+import type ClassBaseOptions from './ClassBaseOptions';
 
 export default class Class extends ClassBase {
-	constructor(namespace: string, name: string, addRegions = true, addCtor = true) {
-		super('class', namespace, name, addRegions, addCtor);
+	constructor(namespace: string, name: string, options: ClassBaseOptions) {
+		super('class', namespace, name, options);
 	}
 }
