@@ -1,4 +1,4 @@
-import{F as t}from"./File-9e84454c.js";class u{generate(e){return new t(e.base.nameSpace,"csproj",[],`<Project Sdk="Microsoft.NET.Sdk">
+import{F as p}from"./File-9e84454c.js";import{f as r,a as t,L as a}from"./index-5f5ec556.js";import"./vendor-3e99503a.js";import"./preload-helper-ec9aa979.js";class c{generate(e){return new p(e.base.nameSpace,"csproj",[],`<Project Sdk="Microsoft.NET.Sdk">
 
 <PropertyGroup>
 	<TargetFramework>net5.0</TargetFramework>
@@ -20,15 +20,19 @@ import{F as t}from"./File-9e84454c.js";class u{generate(e){return new t(e.base.n
 <ItemGroup>
 	<None Remove="logo.png" />
 	<None Remove="plugin.json" />
+${r().map(o=>`${t(1)}<None Remove="${o.fullPath}" />`).join(a)}
 </ItemGroup>
 
 <ItemGroup>
 	<Content Include="logo.png">
-	<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	</Content>
 	<Content Include="plugin.json">
-	<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	</Content>
+${r().map(o=>`${t(1)}<Content Include="${o.fullPath}">
+${t(2)}<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+${t(1)}</Content>`).join(a)}
 </ItemGroup>
 
 <ItemGroup>
@@ -42,4 +46,4 @@ import{F as t}from"./File-9e84454c.js";class u{generate(e){return new t(e.base.n
 	<MSBuild Projects="@(ClearPluginAssemblies)" Properties="PluginPath=$(MSBuildProjectDirectory)\\$(OutDir)" Targets="NopClear" />
 </Target>
 
-</Project>`)}}export{u as default};
+</Project>`)}}export{c as default};
