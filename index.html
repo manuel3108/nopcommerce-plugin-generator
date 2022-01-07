@@ -8,18 +8,18 @@
 
 		
 
-		<link rel="modulepreload" href="/_app/start-a66d10ba.js">
-		<link rel="modulepreload" href="/_app/chunks/vendor-3e99503a.js">
+		<link rel="modulepreload" href="/_app/start-538b2bcc.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-ba024d67.js">
 		<link rel="modulepreload" href="/_app/chunks/preload-helper-ec9aa979.js">
-		<link rel="modulepreload" href="/_app/pages/__layout.svelte-e95dbaa7.js">
-		<link rel="modulepreload" href="/_app/pages/index.svelte-02321c3d.js">
-		<link rel="modulepreload" href="/_app/chunks/index-5f5ec556.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-1c3ba02d.js">
+		<link rel="modulepreload" href="/_app/pages/index.svelte-012e311f.js">
+		<link rel="modulepreload" href="/_app/chunks/index-d68648af.js">
 		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
-		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-91cc2d9b.css">
-		<link rel="stylesheet" href="/_app/assets/index-86c5aacf.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-037fbd4d.css">
+		<link rel="stylesheet" href="/_app/assets/index-97123afd.css">
 
 		<script type="module">
-			import { start } from "/_app/start-a66d10ba.js";
+			import { start } from "/_app/start-538b2bcc.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"","assets":""},
@@ -32,8 +32,8 @@
 					status: 200,
 					error: null,
 					nodes: [
-						import("/_app/pages/__layout.svelte-e95dbaa7.js"),
-						import("/_app/pages/index.svelte-02321c3d.js")
+						import("/_app/pages/__layout.svelte-1c3ba02d.js"),
+						import("/_app/pages/index.svelte-012e311f.js")
 					],
 					page: {
 						host: location.host, // TODO this is redundant
@@ -68,7 +68,7 @@
 	<div class="control svelte-8zof6q"><div class="file"><label class="file-label svelte-s4ymqk"><input class="file-input" name="resume" type="file" accept=".nopgen-config">
 			<span class="file-cta"><span class="file-label svelte-s4ymqk">Choose a file… </span></span></label></div></div>
 </div>
-	<div class="field"><span class="label svelte-8zof6q">Or import existing config
+	<div class="field"><span class="label svelte-8zof6q">Or load configuration template
 
 		</span>
 	<div class="control svelte-8zof6q"><button class="button is-primary">Load configuration template</button></div>
@@ -141,12 +141,17 @@
 <div class="box"><div class="is-flex is-flex-direction-row"><div class="is-flex-grow-1"><h3 class="subtitle">Settings</h3></div>
 		<div><button class="button is-primary is-small svelte-1j439ea">Hide</button></div></div>
 
-	<div><div class="field"><span class="label svelte-8zof6q is-checkbox">Generate Settings
+	<div>
 
-		</span>
-	<div class="control svelte-8zof6q is-checkbox"><input type="checkbox"></div>
+<button class="button is-primary mt-3 add-button svelte-n3bqyu">Add Setting</button></div>
 </div>
-	</div>
+
+<div class="box"><div class="is-flex is-flex-direction-row"><div class="is-flex-grow-1"><h3 class="subtitle">Services</h3></div>
+		<div><button class="button is-primary is-small svelte-1j439ea">Hide</button></div></div>
+
+	<div>
+
+<button class="button is-primary mt-3 add-button svelte-n3bqyu">Add Service</button></div>
 </div>
 
 <hr>

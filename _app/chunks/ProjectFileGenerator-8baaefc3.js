@@ -1,4 +1,4 @@
-import{F as p}from"./File-9e84454c.js";import{f as r,a as t,L as a}from"./index-5f5ec556.js";import"./vendor-3e99503a.js";import"./preload-helper-ec9aa979.js";class c{generate(e){return new p(e.base.nameSpace,"csproj",[],`<Project Sdk="Microsoft.NET.Sdk">
+import{F as p}from"./File-9e84454c.js";import{h as r,a as t,L as a}from"./index-d68648af.js";import"./vendor-ba024d67.js";import"./preload-helper-ec9aa979.js";class c{generate(e){return[new p(e.base.nameSpace,"csproj",[],`<Project Sdk="Microsoft.NET.Sdk">
 
 <PropertyGroup>
 	<TargetFramework>net5.0</TargetFramework>
@@ -46,4 +46,4 @@ ${t(1)}</Content>`).join(a)}
 	<MSBuild Projects="@(ClearPluginAssemblies)" Properties="PluginPath=$(MSBuildProjectDirectory)\\$(OutDir)" Targets="NopClear" />
 </Target>
 
-</Project>`)}}export{c as default};
+</Project>`)]}}export{c as default};
