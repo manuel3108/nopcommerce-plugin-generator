@@ -23,6 +23,8 @@
 	import FormField from '$lib/components/common/FormField.svelte';
 	import { SettingProperty } from '$lib/scripts/configs/PluginSettingsConfig';
 	import { DataTypes } from '$lib/scripts/common/DataTypes';
+	import Services from '$lib/components/Services.svelte';
+	import { Service } from '$lib/scripts/configs/PluginServicesConfig';
 
 	let config: PluginConfig = new PluginConfig();
 	let friendlyName: string;
@@ -117,8 +119,8 @@
 		config.details.author = 'Innovapps';
 		config.details.description = 'MyTestPlugin description';
 		config.details.group = PluginGroup.Misc;
-		config.settings.enabled = true;
 		config.settings.properties.push(new SettingProperty('MyTestInteger', DataTypes.Integer));
+		config.services.serviceClasses.push(new Service('ProfileService', ''));
 	}
 </script>
 
@@ -127,7 +129,7 @@
 
 <Box title="Import">
 	<PluginConfigUpload bind:config {fileExtension} />
-	<FormField name="Or import existing config" required={false}>
+	<FormField name="Or load configuration template" required={false}>
 		<button on:click={openDemoConfig} class="button is-primary">Load configuration template</button>
 	</FormField>
 </Box>
@@ -149,10 +151,11 @@
 </Box>
 
 <Box title="Settings">
-	<CheckboxField name="Generate Settings" bind:value={config.settings.enabled} />
-	{#if config.settings.enabled}
-		<SettingProperties bind:properties={config.settings.properties} />
-	{/if}
+	<SettingProperties bind:properties={config.settings.properties} />
+</Box>
+
+<Box title="Services">
+	<Services bind:services={config.services.serviceClasses} />
 </Box>
 
 <hr />

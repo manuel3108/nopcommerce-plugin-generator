@@ -7,12 +7,12 @@ import type IFileGenerator from '../../IFileGenerator';
 import { addView } from '../../ViewsSingleton';
 
 export default class AdminConfigurationSettingsGenerator implements IFileGenerator {
-	generate(config: PluginConfig): File {
+	generate(config: PluginConfig): File[] {
 		const path = ['Areas', 'Admin', 'Views', 'Configuration'];
 		const name = '_Configure.Settings';
 		const extension = 'cshtml';
 		addView(path, name, extension);
-		return new File(name, extension, path, this.generateContent(config));
+		return [new File(name, extension, path, this.generateContent(config))];
 	}
 
 	protected generateContent(config: PluginConfig): string {

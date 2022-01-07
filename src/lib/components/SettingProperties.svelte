@@ -2,6 +2,7 @@
 	import { SettingProperty } from '$lib/scripts/configs/PluginSettingsConfig';
 	import { DataTypes } from '$lib/scripts/common/DataTypes';
 	import Variable from './common/Variable.svelte';
+	import ListView from './common/ListView.svelte';
 
 	export let properties: SettingProperty[] = [];
 
@@ -11,14 +12,6 @@
 	}
 </script>
 
-{#each properties as property}
-	<Variable bind:name={property.name} bind:type={property.type} />
-{/each}
-
-<button class="button is-primary mt-3" on:click={addSetting}>Add Setting</button>
-
-<style>
-	button {
-		width: 100%;
-	}
-</style>
+<ListView bind:items={properties} addItemText="Add Setting" on:addItem={addSetting} let:index>
+	<Variable bind:name={properties[index].name} bind:type={properties[index].type} />
+</ListView>

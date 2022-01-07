@@ -15,3 +15,7 @@ export function generateClassNamespace(baseNamespace: string, path: string[]) {
 export function convertPathToString(path: string[]): string {
 	return path.join('\\');
 }
+
+export function getDefaultInterfaceName(className: string): string {
+	return 'I' + className;
+}

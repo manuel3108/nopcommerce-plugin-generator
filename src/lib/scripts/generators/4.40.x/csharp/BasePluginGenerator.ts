@@ -12,9 +12,9 @@ import { getIntend } from '$lib/scripts/csharp-lib/common/Helper';
 import { DataTypes } from '$lib/scripts/common/DataTypes';
 
 export default class BasePluginGenerator implements IFileGenerator {
-	generate(config: PluginConfig): File {
+	generate(config: PluginConfig): File[] {
 		const className = config.base.pluginName + 'Plugin';
-		return new File(className, 'cs', [], this.generateBasePluginClassContent(config, className));
+		return [new File(className, 'cs', [], this.generateBasePluginClassContent(config, className))];
 	}
 
 	protected generateBasePluginClassContent(config: PluginConfig, className: string): string {
@@ -26,7 +26,7 @@ export default class BasePluginGenerator implements IFileGenerator {
 		pluginClass.usings.push(new Using('Nop.Services.Plugins'));
 		pluginClass.usings.push(new Using('System.Threading.Tasks'));
 
-		if (config.settings.enabled) {
+		if (config.settings.properties.length > 0) {
 			pluginClass.usings.push(new Using('Nop.Services.Localization'));
 			pluginClass.usings.push(new Using('Nop.Services.Configuration'));
 		}
@@ -60,7 +60,7 @@ export default class BasePluginGenerator implements IFileGenerator {
 		});
 		pluginClass.methods.push(installAsync);
 
-		if (config.settings.enabled) {
+		if (config.settings.properties.length > 0) {
 			this.addLocalResources(installAsync, pluginClass);
 			this.initializeDefaultSettings(installAsync, config, pluginClass);
 		}

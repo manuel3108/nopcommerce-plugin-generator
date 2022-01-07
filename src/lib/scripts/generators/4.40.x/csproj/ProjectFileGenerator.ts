@@ -6,12 +6,13 @@ import { LineBreak } from '$lib/scripts/common/Defaults';
 import { getIntend } from '$lib/scripts/csharp-lib/common/Helper';
 
 export default class ProjectFileGenerator implements IFileGenerator {
-	generate(config: PluginConfig): File {
-		return new File(
-			config.base.nameSpace,
-			'csproj',
-			[],
-			`<Project Sdk="Microsoft.NET.Sdk">
+	generate(config: PluginConfig): File[] {
+		return [
+			new File(
+				config.base.nameSpace,
+				'csproj',
+				[],
+				`<Project Sdk="Microsoft.NET.Sdk">
 
 <PropertyGroup>
 	<TargetFramework>net5.0</TargetFramework>
@@ -67,6 +68,7 @@ ${getIntend(1)}</Content>`
 </Target>
 
 </Project>`
-		);
+			)
+		];
 	}
 }

@@ -16,6 +16,4 @@ export default class PluginSettingsConfig {
 	constructor() {
 		this.properties = [];
 	}
-
-	enabled: boolean;
 }

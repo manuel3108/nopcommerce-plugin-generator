@@ -22,6 +22,11 @@ input:placeholder-shown {
 	font-style: italic;
 }
 
+input::placeholder {
+	color: #909090;
+	opacity: 1;
+}
+
 input,
 button,
 select,

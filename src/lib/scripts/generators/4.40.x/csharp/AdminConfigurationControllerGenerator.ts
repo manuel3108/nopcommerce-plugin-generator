@@ -12,10 +12,10 @@ import { generateClassNamespace, getIntend } from '$lib/scripts/csharp-lib/commo
 import type IFileGenerator from '../../IFileGenerator';
 
 export default class PluginSettingsGenerator implements IFileGenerator {
-	generate(config: PluginConfig): File {
+	generate(config: PluginConfig): File[] {
 		const className = config.base.pluginName + 'ConfigurationController';
 		const path = ['Areas', 'Admin', 'Controllers'];
-		return new File(className, 'cs', path, this.generateContent(config, className, path));
+		return [new File(className, 'cs', path, this.generateContent(config, className, path))];
 	}
 
 	protected generateContent(config: PluginConfig, className: string, filePath: string[]): string {

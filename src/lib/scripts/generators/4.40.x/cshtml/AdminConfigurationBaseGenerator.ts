@@ -5,12 +5,12 @@ import { addLanguageResource } from '../../LanguageResourceSingleton';
 import { addView } from '../../ViewsSingleton';
 
 export default class AdminConfigurationBaseGenerator implements IFileGenerator {
-	generate(config: PluginConfig): File {
+	generate(config: PluginConfig): File[] {
 		const path = ['Areas', 'Admin', 'Views', 'Configuration'];
 		const name = 'Configure';
 		const extension = 'cshtml';
 		addView(path, name, extension);
-		return new File(name, extension, path, this.generateContent(config));
+		return [new File(name, extension, path, this.generateContent(config))];
 	}
 
 	protected generateContent(config: PluginConfig): string {

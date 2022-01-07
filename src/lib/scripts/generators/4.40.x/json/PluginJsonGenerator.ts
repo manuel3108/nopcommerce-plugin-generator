@@ -5,8 +5,8 @@ import type PluginConfig from '$lib/scripts/configs/PluginConfig';
 import type IFileGenerator from '../../IFileGenerator';
 
 export default class PluginJsonGenerator implements IFileGenerator {
-	generate(config: PluginConfig): File {
-		return new File('plugin', 'json', [], JSON.stringify(this.generatePluginsJsonContent(config), null, Intend));
+	generate(config: PluginConfig): File[] {
+		return [new File('plugin', 'json', [], JSON.stringify(this.generatePluginsJsonContent(config), null, Intend))];
 	}
 
 	generatePluginsJsonContent(config: PluginConfig): Record<string, unknown> {

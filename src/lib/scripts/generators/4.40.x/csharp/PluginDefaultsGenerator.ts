@@ -7,9 +7,9 @@ import type IFileGenerator from '../../IFileGenerator';
 import { DataTypes } from '$lib/scripts/common/DataTypes';
 
 export default class PluginDefaultsGenerator implements IFileGenerator {
-	generate(config: PluginConfig): File {
+	generate(config: PluginConfig): File[] {
 		const className = config.base.pluginName + 'Defaults';
-		return new File(className, 'cs', [], this.generatePluginDefaultsClassContent(config, className));
+		return [new File(className, 'cs', [], this.generatePluginDefaultsClassContent(config, className))];
 	}
 
 	protected generatePluginDefaultsClassContent(config: PluginConfig, className: string): string {

@@ -7,9 +7,9 @@ import { Visibility } from '$lib/scripts/csharp-lib/base/Visibility';
 import type IFileGenerator from '../../IFileGenerator';
 
 export default class PluginSettingsGenerator implements IFileGenerator {
-	generate(config: PluginConfig): File {
+	generate(config: PluginConfig): File[] {
 		const className = config.base.pluginName + 'Settings';
-		return new File(className, 'cs', [], this.generateContent(config, className));
+		return [new File(className, 'cs', [], this.generateContent(config, className))];
 	}
 
 	protected generateContent(config: PluginConfig, className: string): string {
