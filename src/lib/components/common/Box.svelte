@@ -11,8 +11,8 @@
 </script>
 
 <div class="box">
-	<div class="is-flex is-flex-direction-row">
-		<div class="is-flex-grow-1"><h3 class="subtitle">{title}</h3></div>
+	<div class="flex flex-row">
+		<div class="grow "><h3 class="subtitle">{title}</h3></div>
 		<div>
 			<button class="button is-primary is-small" on:click={expandOrHide}>
 				{isExpanded ? 'Hide' : 'Expand'}
@@ -30,5 +30,12 @@
 <style>
 	button {
 		margin-bottom: 0;
+	}
+
+	.subtitle {
+		color: #8c9b9d;
+		font-size: 1.25rem;
+		font-weight: 400;
+		line-height: 1.25;
 	}
 </style>

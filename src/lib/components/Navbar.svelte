@@ -1,35 +1,16 @@
-<script lang="ts">
-</script>
-
-<nav class="navbar" aria-label="main navigation">
-	<div class="navbar-brand">
-		<div class="navbar-item">
-			<a href="/"><img src="/favicon.png" alt="NopCommerce Plugin Generator" /></a>
-			NopCommerce Plugin Generator
-		</div>
+<nav class="flex items-center justify-between flex-wrap p-3">
+	<div class="flex items-center flex-shrink-0 text-white mr-6">
+		<img src="/favicon.png" style="height: 30px;" alt="Icon" />
+		<span class="font-semibold text-xl tracking-tight">NopCommerce Plugin Generator</span>
 	</div>
-	<div class="navbar-menu">
-		<div class="navbar-end">
-			<div class="navbar-item">
-				<a href="https://github.com/manuel3108/nopcommerce-plugin-generator">Github</a>
-			</div>
-			<div class="navbar-item">
-				<span>
-					<!-- {#if $currentTime}
-						{$currentTime.toFormat('HH:mm:ss')}
-					{/if} -->
-				</span>
-			</div>
+	<div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto text-right">
+		<div class="text-sm lg:flex-grow">
+			<a
+				href="https://github.com/manuel3108/nopcommerce-plugin-generator"
+				class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+			>
+				Github
+			</a>
 		</div>
 	</div>
 </nav>
-
-<style>
-	.navbar {
-		border-radius: 0;
-	}
-
-	img {
-		margin-right: 10px;
-	}
-</style>

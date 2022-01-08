@@ -16,19 +16,15 @@
 </script>
 
 <FormField name="Upload existing plugin config" required={false}>
-	<div class="file">
-		<label class="file-label">
-			<input class="file-input" name="resume" type="file" accept={fileExtension} on:change={(e) => onFileSelected(e)} />
-			<span class="file-cta">
-				<span class="file-label"> Choose a file… </span>
-			</span>
+	<div class="file-upload-wrapper">
+		<label class="file-upload">
+			<span class="mt-2 text-center leading-normal">Choose a file…</span>
+			<input
+				type="file"
+				class="hidden"
+				accept={fileExtension}
+				on:change={(e) => onFileSelected(e)}
+			/>
 		</label>
 	</div>
 </FormField>
-
-<style>
-	.file-label {
-		display: block !important;
-		text-align: center;
-	}
-</style>

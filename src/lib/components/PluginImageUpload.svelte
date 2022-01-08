@@ -14,18 +14,15 @@
 </script>
 
 <FormField name="Plugin logo" required={true}>
-	<div class="file">
-		<label class="file-label">
+	<div class="file-upload-wrapper">
+		<label class="file-upload">
+			<span class="mt-2 text-center leading-normal">Choose A file</span>
 			<input
-				class="file-input"
-				name="resume"
 				type="file"
+				class="hidden"
 				accept=".jpg, .jpeg, .png"
 				on:change={(e) => onFileSelected(e)}
 			/>
-			<span class="file-cta">
-				<span class="file-label"> Choose a file… </span>
-			</span>
 		</label>
 	</div>
 </FormField>
@@ -38,10 +35,5 @@
 	img {
 		margin: 0 auto;
 		display: block;
-	}
-
-	.file-label {
-		display: block !important;
-		text-align: center;
 	}
 </style>

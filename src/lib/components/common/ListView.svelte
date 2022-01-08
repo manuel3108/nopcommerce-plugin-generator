@@ -17,7 +17,7 @@
 </script>
 
 {#each items as item, i}
-	<div class="list-item">
+	<div class="list-item py-2">
 		<div class="list-value">
 			<slot {item} index={i} />
 		</div>
@@ -33,7 +33,6 @@
 	.list-item {
 		display: flex;
 		align-items: flex-end;
-		padding: 0.5rem;
 	}
 
 	.list-value {

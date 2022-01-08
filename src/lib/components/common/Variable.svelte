@@ -2,6 +2,7 @@
 	import { DataTypes } from '$lib/scripts/common/DataTypes';
 
 	import FormField from './FormField.svelte';
+	import InputField from './InputField.svelte';
 	import TwoColumns from './TwoColumns.svelte';
 
 	export let name: string;
@@ -25,8 +26,6 @@
 		</FormField>
 	</svelte:fragment>
 	<svelte:fragment slot="right">
-		<FormField name="Name" required={false}>
-			<input bind:value={name} />
-		</FormField>
+		<InputField name="Name" bind:value={name} />
 	</svelte:fragment>
 </TwoColumns>

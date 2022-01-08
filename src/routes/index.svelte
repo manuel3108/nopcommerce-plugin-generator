@@ -16,7 +16,6 @@
 	import { Intend } from '$lib/scripts/common/Defaults';
 	import PluginImageUpload from '$lib/components/PluginImageUpload.svelte';
 	import { onMount } from 'svelte';
-	import CheckboxField from '$lib/components/common/CheckboxField.svelte';
 	import SettingProperties from '$lib/components/SettingProperties.svelte';
 	import SplitPane from '$lib/components/common/SplitPane.svelte';
 	import PluginConfigUpload from '$lib/components/PluginConfigUpload.svelte';
@@ -25,6 +24,7 @@
 	import { DataTypes } from '$lib/scripts/common/DataTypes';
 	import Services from '$lib/components/Services.svelte';
 	import { Service } from '$lib/scripts/configs/PluginServicesConfig';
+	import Title from '$lib/components/Title.svelte';
 
 	let config: PluginConfig = new PluginConfig();
 	let friendlyName: string;
@@ -124,8 +124,7 @@
 	}
 </script>
 
-<h1 class="title">NopCommerce Plugin Generator</h1>
-<h2 class="subtitle">some description about the goal of this project</h2>
+<Title />
 
 <Box title="Import">
 	<PluginConfigUpload bind:config {fileExtension} />
