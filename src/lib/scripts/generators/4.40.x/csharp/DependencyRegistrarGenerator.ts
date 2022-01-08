@@ -31,6 +31,7 @@ export default class DependencyRegistrarGenerator implements IFileGenerator {
 		myClass.usings.push(new Using('Microsoft.Extensions.DependencyInjection'));
 		myClass.usings.push(new Using('Nop.Core.Infrastructure'));
 		myClass.usings.push(new Using('Nop.Core.Configuration'));
+		myClass.usings.push(new Using(generateClassNamespace(config.base.nameSpace, ['Services'])));
 
 		// fields
 		myClass.addField(
