@@ -20,7 +20,7 @@ export default class DependencyRegistrarGenerator implements IFileGenerator {
 	protected generatesContent(config: PluginConfig, className: string, path: string[]): string {
 		const myClass = new Class(generateClassNamespace(config.base.nameSpace, path), className, {
 			addCtor: false,
-			addRegions: false
+			addRegions: true
 		});
 
 		// inheritance

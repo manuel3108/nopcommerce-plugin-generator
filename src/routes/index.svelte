@@ -11,9 +11,6 @@
 	import Box from '$lib/components/common/Box.svelte';
 	import { PluginGroup } from '$lib/scripts/common/PluginGroup';
 	import PluginGroupSelector from '$lib/components/PluginGroupSelector.svelte';
-	import JSZip from 'jszip';
-	import saveAs from 'file-saver';
-	import { Intend } from '$lib/scripts/common/Defaults';
 	import PluginImageUpload from '$lib/components/PluginImageUpload.svelte';
 	import { onMount } from 'svelte';
 	import SettingProperties from '$lib/components/SettingProperties.svelte';
@@ -25,6 +22,7 @@
 	import Services from '$lib/components/Services.svelte';
 	import { Service } from '$lib/scripts/configs/PluginServicesConfig';
 	import Title from '$lib/components/Title.svelte';
+	import Downloads from '$lib/components/Downloads.svelte';
 
 	let config: PluginConfig = new PluginConfig();
 	let friendlyName: string;
@@ -76,40 +74,9 @@
 		openFile(lastFileId);
 	}
 
-	function downloadPlugin() {
-		const zip = new JSZip();
-
-		addFilesToZip(fileTree, zip);
-
-		var uri = pluginImageUrl;
-		var index = uri.indexOf('base64,') + 'base64,'.length;
-		var content = uri.substring(index);
-		zip.file(config.base.nameSpace + '/logo.png', content, { base64: true });
-
-		zip.generateAsync({ type: 'blob' }).then(function (content) {
-			saveAs(content, config.base.nameSpace + '.zip');
-		});
-	}
-
-	function addFilesToZip(tree: TreeNode, zip: JSZip) {
-		if (tree.isDirectory) {
-			const folder = zip.folder(tree.fileName);
-			tree.children.forEach((child) => {
-				addFilesToZip(child, folder);
-			});
-		} else {
-			zip.file(tree.fileName, files[tree.fileId].content);
-		}
-	}
-
 	function openFile(fileId) {
 		lastFileId = fileId;
 		activeFile = files[fileId];
-	}
-
-	function downloadConfig() {
-		const configJson = JSON.stringify(config, null, Intend);
-		saveAs(new Blob([configJson], { type: 'application/json' }), config.base.nameSpace + fileExtension);
 	}
 
 	function openDemoConfig() {
@@ -126,7 +93,7 @@
 
 <Title />
 
-<Box title="Import">
+<Box title="Import" isExpanded={false}>
 	<PluginConfigUpload bind:config {fileExtension} />
 	<FormField name="Or load configuration template" required={false}>
 		<button on:click={openDemoConfig} class="button is-primary">Load configuration template</button>
@@ -138,22 +105,22 @@
 	<PluginGroupSelector bind:group={config.details.group} />
 	<InputField name="Plugin Name" bind:value={config.base.pluginName} />
 	<InputField name="NameSpace" bind:value={config.base.nameSpace} />
-</Box>
-
-<Box title="Details">
 	<InputField name="Author" bind:value={config.details.author} />
 	<InputField name="Description" bind:value={config.details.description} />
-	<InputField name="Friendly name" bind:value={friendlyName} placeholder={config.base.pluginName} />
-	<InputField name="Version" bind:value={pluginVersion} placeholder={pluginVersionDefault} />
-	<InputField name="System name" bind:value={systemName} placeholder={config.details.group + '.' + config.base.pluginName} />
 	<PluginImageUpload bind:url={pluginImageUrl} />
 </Box>
 
-<Box title="Settings">
+<Box title="Optional configuration" isExpanded={false}>
+	<InputField name="Friendly name" bind:value={friendlyName} placeholder={config.base.pluginName} />
+	<InputField name="Version" bind:value={pluginVersion} placeholder={pluginVersionDefault} />
+	<InputField name="System name" bind:value={systemName} placeholder={config.details.group + '.' + config.base.pluginName} />
+</Box>
+
+<Box title="Settings" isExpanded={false}>
 	<SettingProperties bind:properties={config.settings.properties} />
 </Box>
 
-<Box title="Services">
+<Box title="Services" isExpanded={false}>
 	<Services bind:services={config.services.serviceClasses} />
 </Box>
 
@@ -173,12 +140,5 @@
 <hr />
 
 <Box title="Downloads">
-	<div>
-		<button on:click={downloadPlugin} class="button is-primary">Download Plugin As Zip</button>
-		<button on:click={downloadConfig} class="button is-primary">Download Config</button>
-	</div>
-	<p>After you have extracted your plugin into the "Plugins" directory, make sure to execute the following command from within your terminal:</p>
-	<pre>
-		dotnet add project Plugins/{config.base.nameSpace}/{config.base.nameSpace}.csproj
-	</pre>
+	<Downloads bind:fileTree {fileExtension} bind:files bind:config bind:pluginImageUrl />
 </Box>

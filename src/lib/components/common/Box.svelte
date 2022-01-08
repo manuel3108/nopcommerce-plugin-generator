@@ -2,8 +2,7 @@
 	import { slide } from 'svelte/transition';
 
 	export let title: string;
-
-	let isExpanded = true;
+	export let isExpanded = true;
 
 	function expandOrHide() {
 		isExpanded = !isExpanded;
