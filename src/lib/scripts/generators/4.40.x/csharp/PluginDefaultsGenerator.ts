@@ -24,7 +24,8 @@ export default class PluginDefaultsGenerator implements IFileGenerator {
 				isConstant: true,
 				isReadonly: false,
 				hasGetterAndSetter: false,
-				additionalNewLine: false
+				additionalNewLine: false,
+				isProperty: false
 			}),
 			false
 		);

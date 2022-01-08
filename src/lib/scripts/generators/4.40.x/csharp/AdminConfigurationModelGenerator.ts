@@ -33,7 +33,8 @@ export default class PluginSettingsGenerator implements IFileGenerator {
 				hasGetterAndSetter: true,
 				isConstant: false,
 				isReadonly: false,
-				additionalNewLine: true
+				additionalNewLine: true,
+				isProperty: false
 			}),
 			false
 		);
@@ -49,7 +50,8 @@ export default class PluginSettingsGenerator implements IFileGenerator {
 					isConstant: false,
 					isReadonly: false,
 					attribute: new FieldAttribute(NopResourceDisplayAttributeName + '("' + languageResourceName + '")'),
-					additionalNewLine: false
+					additionalNewLine: false,
+					isProperty: false
 				}),
 				false
 			);
@@ -60,7 +62,8 @@ export default class PluginSettingsGenerator implements IFileGenerator {
 					hasGetterAndSetter: true,
 					isConstant: false,
 					isReadonly: false,
-					additionalNewLine: true
+					additionalNewLine: true,
+					isProperty: false
 				}),
 				false
 			);

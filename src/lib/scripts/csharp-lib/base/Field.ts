@@ -7,6 +7,7 @@ interface FieldConfig {
 	value?: string;
 	isConstant: boolean;
 	isReadonly: boolean;
+	isProperty: boolean;
 	hasGetterAndSetter: boolean;
 	attribute?: FieldAttribute;
 	additionalNewLine: boolean;
@@ -45,7 +46,10 @@ export default class Field {
 		result += ` ${this.type} ${this.name}`;
 
 		if (this.options.value) {
-			result += ` = ${this.options.value}`;
+			if (this.options.isProperty) result += ' => ';
+			else result += ' = ';
+
+			result += this.options.value;
 		}
 
 		if (this.options.hasGetterAndSetter) {

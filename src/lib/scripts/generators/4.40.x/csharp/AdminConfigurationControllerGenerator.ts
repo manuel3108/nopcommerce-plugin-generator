@@ -89,7 +89,8 @@ export default class PluginSettingsGenerator implements IFileGenerator {
 				hasGetterAndSetter: false,
 				isConstant: false,
 				additionalNewLine: false,
-				isReadonly: true
+				isReadonly: true,
+				isProperty: false
 			})
 		);
 		settingsController.usings.push(new Using('Nop.Services.Configuration'));
@@ -99,7 +100,8 @@ export default class PluginSettingsGenerator implements IFileGenerator {
 				hasGetterAndSetter: false,
 				isConstant: false,
 				additionalNewLine: false,
-				isReadonly: true
+				isReadonly: true,
+				isProperty: false
 			})
 		);
 		settingsController.usings.push(new Using('Nop.Core'));

@@ -81,7 +81,8 @@ export default class BasePluginGenerator implements IFileGenerator {
 				hasGetterAndSetter: false,
 				isConstant: false,
 				isReadonly: true,
-				additionalNewLine: false
+				additionalNewLine: false,
+				isProperty: false
 			})
 		);
 	}
@@ -100,7 +101,8 @@ export default class BasePluginGenerator implements IFileGenerator {
 				hasGetterAndSetter: false,
 				isConstant: false,
 				isReadonly: true,
-				additionalNewLine: false
+				additionalNewLine: false,
+				isProperty: false
 			})
 		);
 	}
@@ -112,7 +114,8 @@ export default class BasePluginGenerator implements IFileGenerator {
 				hasGetterAndSetter: false,
 				isConstant: false,
 				isReadonly: true,
-				additionalNewLine: false
+				additionalNewLine: false,
+				isProperty: false
 			})
 		);
 

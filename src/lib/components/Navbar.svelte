@@ -1,7 +1,7 @@
 <script lang="ts">
 </script>
 
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav class="navbar" aria-label="main navigation">
 	<div class="navbar-brand">
 		<div class="navbar-item">
 			<a href="/"><img src="/favicon.png" alt="NopCommerce Plugin Generator" /></a>
