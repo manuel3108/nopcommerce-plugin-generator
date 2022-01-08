@@ -1,4 +1,4 @@
-import{f as t,L as s,O as i,a as n}from"./index-3be879ec.js";import{F as d}from"./File-9e84454c.js";import"./vendor-70f8720b.js";import"./preload-helper-ec9aa979.js";class f{generate(e){const o=["Areas","Admin","Views","Configuration"],a="_Configure.Settings",r="cshtml";return t(o,a,r),[new d(a,r,o,this.generateContent(e))]}generateContent(e){return`@model ConfigurationModel
+import{f as t,L as s,O as i,a as n}from"./index-7749feff.js";import{F as d}from"./File-9e84454c.js";import"./vendor-70f8720b.js";import"./preload-helper-ec9aa979.js";class ${generate(e){const o=["Areas","Admin","Views","Configuration"],a="_Configure.Settings",r="cshtml";return t(o,a,r),[new d(a,r,o,this.generateContent(e))]}generateContent(e){return`@model ConfigurationModel
 @using ${e.base.nameSpace}.Areas.Admin.Models
 
 <div class="card-body">
@@ -12,4 +12,4 @@ ${n(2)}<div class="col-md-9">
 ${n(3)}<nop-editor asp-for="${e.name}" />
 ${n(3)}<span asp-validation-for="${e.name}"></span>
 ${n(2)}</div>
-${n(1)}</div>`}}export{f as default};
+${n(1)}</div>`}}export{$ as default};
