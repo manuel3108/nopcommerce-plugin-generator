@@ -2,29 +2,29 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" href="/favicon.png" />
+		<meta name="description" content="" />
+		<link rel="icon" href="./favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		
 
 		
 
-		<link rel="modulepreload" href="/_app/start-f0e15f47.js">
-		<link rel="modulepreload" href="/_app/chunks/vendor-5e98958b.js">
+		<link rel="stylesheet" href="/_app/assets/start-d5b4de3e.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-79f3a83c.css">
+		<link rel="stylesheet" href="/_app/assets/index-36708599.css">
+		<link rel="modulepreload" href="/_app/start-4c5cd514.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-70f8720b.js">
 		<link rel="modulepreload" href="/_app/chunks/preload-helper-ec9aa979.js">
-		<link rel="modulepreload" href="/_app/pages/__layout.svelte-24137045.js">
-		<link rel="modulepreload" href="/_app/pages/index.svelte-e87f179b.js">
-		<link rel="modulepreload" href="/_app/chunks/index-e5b2d387.js">
-		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
-		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-037fbd4d.css">
-		<link rel="stylesheet" href="/_app/assets/index-97123afd.css">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-f1df00b4.js">
+		<link rel="modulepreload" href="/_app/pages/index.svelte-4e006659.js">
+		<link rel="modulepreload" href="/_app/chunks/index-3be879ec.js">
 
 		<script type="module">
-			import { start } from "/_app/start-f0e15f47.js";
+			import { start } from "/_app/start-4c5cd514.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"","assets":""},
 				session: {},
-				host: location.host,
 				route: true,
 				spa: false,
 				trailing_slash: "never",
@@ -32,15 +32,11 @@
 					status: 200,
 					error: null,
 					nodes: [
-						import("/_app/pages/__layout.svelte-24137045.js"),
-						import("/_app/pages/index.svelte-e87f179b.js")
+						import("/_app/pages/__layout.svelte-f1df00b4.js"),
+						import("/_app/pages/index.svelte-4e006659.js")
 					],
-					page: {
-						host: location.host, // TODO this is redundant
-						path: "\u002F",
-						query: new URLSearchParams(""),
-						params: {}
-					}
+					url: new URL("http://prerender/"),
+					params: {}
 				}
 			});
 		</script>
@@ -49,24 +45,22 @@
 		<div id="svelte">
 
 
-<nav class="navbar svelte-1i1mihx" aria-label="main navigation"><div class="navbar-brand"><div class="navbar-item"><a href="/"><img src="/favicon.png" alt="NopCommerce Plugin Generator" class="svelte-1i1mihx"></a>
-			NopCommerce Plugin Generator
-		</div></div>
-	<div class="navbar-menu"><div class="navbar-end"><div class="navbar-item"><a href="https://github.com/manuel3108/nopcommerce-plugin-generator">Github</a></div>
-			<div class="navbar-item"><span></span></div></div></div>
-</nav>
+<nav class="flex items-center justify-between flex-wrap p-3"><div class="flex items-center flex-shrink-0 text-white mr-6"><img src="/favicon.png" style="height: 30px;" alt="Icon">
+		<span class="font-semibold text-xl tracking-tight">NopCommerce Plugin Generator</span></div>
+	<div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto text-right"><div class="text-sm lg:flex-grow"><a href="https://github.com/manuel3108/nopcommerce-plugin-generator" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">Github
+			</a></div></div></nav>
 
-<main class="svelte-10hoedr"><h1 class="title">NopCommerce Plugin Generator</h1>
+<main class="svelte-10hoedr"><h1 class="text-3xl">NopCommerce Plugin Generator</h1>
 <h2 class="subtitle">some description about the goal of this project</h2>
 
-<div class="box"><div class="is-flex is-flex-direction-row"><div class="is-flex-grow-1"><h3 class="subtitle">Import</h3></div>
-		<div><button class="button is-primary is-small svelte-1j439ea">Hide</button></div></div>
+<div class="box"><div class="flex flex-row"><div class="grow "><h3 class="subtitle svelte-17aypyk">Import</h3></div>
+		<div><button class="button is-primary is-small svelte-17aypyk">Hide</button></div></div>
 
 	<div><div class="field"><span class="label svelte-8zof6q">Upload existing plugin config
 
 		</span>
-	<div class="control svelte-8zof6q"><div class="file"><label class="file-label svelte-s4ymqk"><input class="file-input" name="resume" type="file" accept=".nopgen-config">
-			<span class="file-cta"><span class="file-label svelte-s4ymqk">Choose a file… </span></span></label></div></div>
+	<div class="control svelte-8zof6q"><div class="file-upload-wrapper"><label class="file-upload"><span class="mt-2 text-center leading-normal">Choose a file…</span>
+			<input type="file" class="hidden" accept=".nopgen-config"></label></div></div>
 </div>
 	<div class="field"><span class="label svelte-8zof6q">Or load configuration template
 
@@ -75,8 +69,8 @@
 </div></div>
 </div>
 
-<div class="box"><div class="is-flex is-flex-direction-row"><div class="is-flex-grow-1"><h3 class="subtitle">Base configuration</h3></div>
-		<div><button class="button is-primary is-small svelte-1j439ea">Hide</button></div></div>
+<div class="box"><div class="flex flex-row"><div class="grow "><h3 class="subtitle svelte-17aypyk">Base configuration</h3></div>
+		<div><button class="button is-primary is-small svelte-17aypyk">Hide</button></div></div>
 
 	<div><div class="field"><span class="label svelte-8zof6q">NopCommerce Version
 
@@ -100,8 +94,8 @@
 </div></div>
 </div>
 
-<div class="box"><div class="is-flex is-flex-direction-row"><div class="is-flex-grow-1"><h3 class="subtitle">Details</h3></div>
-		<div><button class="button is-primary is-small svelte-1j439ea">Hide</button></div></div>
+<div class="box"><div class="flex flex-row"><div class="grow "><h3 class="subtitle svelte-17aypyk">Details</h3></div>
+		<div><button class="button is-primary is-small svelte-17aypyk">Hide</button></div></div>
 
 	<div><div class="field"><span class="label svelte-8zof6q">Author
 
@@ -131,33 +125,33 @@
 	<div class="field"><span class="label svelte-8zof6q">Plugin logo
 
 		<span class="required"> *</span></span>
-	<div class="control svelte-8zof6q"><div class="file"><label class="file-label svelte-g7sd8v"><input class="file-input" name="resume" type="file" accept=".jpg, .jpeg, .png">
-			<span class="file-cta"><span class="file-label svelte-g7sd8v">Choose a file… </span></span></label></div></div>
+	<div class="control svelte-8zof6q"><div class="file-upload-wrapper"><label class="file-upload"><span class="mt-2 text-center leading-normal">Choose A file</span>
+			<input type="file" class="hidden" accept=".jpg, .jpeg, .png"></label></div></div>
 </div>
 
 </div>
 </div>
 
-<div class="box"><div class="is-flex is-flex-direction-row"><div class="is-flex-grow-1"><h3 class="subtitle">Settings</h3></div>
-		<div><button class="button is-primary is-small svelte-1j439ea">Hide</button></div></div>
+<div class="box"><div class="flex flex-row"><div class="grow "><h3 class="subtitle svelte-17aypyk">Settings</h3></div>
+		<div><button class="button is-primary is-small svelte-17aypyk">Hide</button></div></div>
 
 	<div>
 
-<button class="button is-primary mt-3 add-button svelte-n3bqyu">Add Setting</button></div>
+<button class="button is-primary mt-3 add-button svelte-qfyhlr">Add Setting</button></div>
 </div>
 
-<div class="box"><div class="is-flex is-flex-direction-row"><div class="is-flex-grow-1"><h3 class="subtitle">Services</h3></div>
-		<div><button class="button is-primary is-small svelte-1j439ea">Hide</button></div></div>
+<div class="box"><div class="flex flex-row"><div class="grow "><h3 class="subtitle svelte-17aypyk">Services</h3></div>
+		<div><button class="button is-primary is-small svelte-17aypyk">Hide</button></div></div>
 
 	<div>
 
-<button class="button is-primary mt-3 add-button svelte-n3bqyu">Add Service</button></div>
+<button class="button is-primary mt-3 add-button svelte-qfyhlr">Add Service</button></div>
 </div>
 
 <hr>
 
-<div class="box"><div class="is-flex is-flex-direction-row"><div class="is-flex-grow-1"><h3 class="subtitle">Preview (binary files not shown)</h3></div>
-		<div><button class="button is-primary is-small svelte-1j439ea">Hide</button></div></div>
+<div class="box"><div class="flex flex-row"><div class="grow "><h3 class="subtitle svelte-17aypyk">Preview (binary files not shown)</h3></div>
+		<div><button class="button is-primary is-small svelte-17aypyk">Hide</button></div></div>
 
 	<div><div class="split-pane svelte-1tqp3vw"><div class="left svelte-1tqp3vw" style="flex-basis: 25%"><ul class="svelte-5y2q7r"><li class="svelte-5y2q7r"><div class="pointer svelte-5y2q7r"><span class="svelte-5y2q7r active"><span class="arrow svelte-5y2q7r arrowDown">▶</span>
 					root</span>
@@ -172,8 +166,8 @@
 
 <hr>
 
-<div class="box"><div class="is-flex is-flex-direction-row"><div class="is-flex-grow-1"><h3 class="subtitle">Downloads</h3></div>
-		<div><button class="button is-primary is-small svelte-1j439ea">Hide</button></div></div>
+<div class="box"><div class="flex flex-row"><div class="grow "><h3 class="subtitle svelte-17aypyk">Downloads</h3></div>
+		<div><button class="button is-primary is-small svelte-17aypyk">Hide</button></div></div>
 
 	<div><div><button class="button is-primary">Download Plugin As Zip</button>
 		<button class="button is-primary">Download Config</button></div>
@@ -183,9 +177,6 @@
 </div>
 </main>
 
-
-
-			
-		</div>
+</div>
 	</body>
 </html>
