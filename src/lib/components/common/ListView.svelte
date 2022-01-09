@@ -32,7 +32,7 @@
 <style>
 	.list-item {
 		display: flex;
-		align-items: flex-end;
+		align-items: center;
 	}
 
 	.list-value {

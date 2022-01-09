@@ -23,6 +23,8 @@
 	import { Service } from '$lib/scripts/configs/PluginServicesConfig';
 	import Title from '$lib/components/Title.svelte';
 	import Downloads from '$lib/components/Downloads.svelte';
+	import DatabaseEntities from '$lib/components/DatabaseEntities.svelte';
+	import { DatabaseEntity } from '$lib/scripts/configs/PluginDatabaseConfig';
 
 	let config: PluginConfig = new PluginConfig();
 	let friendlyName: string;
@@ -88,6 +90,7 @@
 		config.details.group = PluginGroup.Misc;
 		config.settings.properties.push(new SettingProperty('MyTestInteger', DataTypes.Integer));
 		config.services.serviceClasses.push(new Service('ProfileService', ''));
+		config.database.entities.push(new DatabaseEntity('CustomTable', ''));
 	}
 </script>
 
@@ -122,6 +125,10 @@
 
 <Box title="Services" isExpanded={false}>
 	<Services bind:services={config.services.serviceClasses} />
+</Box>
+
+<Box title="Database" isExpanded={false}>
+	<DatabaseEntities bind:entities={config.database.entities} />
 </Box>
 
 <hr />

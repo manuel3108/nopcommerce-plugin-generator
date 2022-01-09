@@ -45,7 +45,7 @@ export default class ClassBase {
 		if (addToCtor) {
 			const nameWithoutPrefix = field.name.replace(FieldPrefix, '');
 			this.myConstructor.parameters.push(new Parameter(field.type, nameWithoutPrefix));
-			this.myConstructor.expressions.push(`this.${field.name} = ${nameWithoutPrefix};`);
+			this.myConstructor.expressions.push(`${field.name} = ${nameWithoutPrefix};`);
 		}
 	}
 
