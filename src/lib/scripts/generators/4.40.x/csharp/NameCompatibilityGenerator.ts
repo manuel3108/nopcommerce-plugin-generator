@@ -27,7 +27,6 @@ export default class NameCompatibilityGenerator implements IFileGenerator {
 		});
 
 		myClass.usings.push(new Using('Nop.Data.Mapping'));
-		myClass.usings.push(new Using('System'));
 		myClass.usings.push(new Using('System.Collections.Generic'));
 		myClass.usings.push(new Using(config.base.nameSpace + '.Domain'));
 
