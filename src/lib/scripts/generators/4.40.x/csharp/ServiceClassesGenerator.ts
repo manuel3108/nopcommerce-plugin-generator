@@ -44,6 +44,7 @@ export default class ServiceClassesGenerator implements IFileGenerator {
 			addCtor: true,
 			addRegions: true
 		});
+		myClass.inheritsFrom = getDefaultInterfaceName(serviceClass.name);
 
 		myClass.inheritsFrom = serviceClass.interfaceName || getDefaultInterfaceName(serviceClass.name);
 
