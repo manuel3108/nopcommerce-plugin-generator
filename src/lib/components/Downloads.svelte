@@ -50,7 +50,7 @@
 </div>
 <p>After you have extracted your plugin into the "Plugins" directory, make sure to execute the following command from within your terminal:</p>
 <pre class="overflow-auto p-4">
-    dotnet add project Plugins/{config.base.nameSpace}/{config.base.nameSpace}.csproj
+	dotnet "sln" "add" "Plugins/{config.base.nameSpace}/{config.base.nameSpace}.csproj"
 </pre>
 
 <style>
