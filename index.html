@@ -12,15 +12,15 @@
 		<link rel="stylesheet" href="/_app/assets/start-d5b4de3e.css">
 		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-8c81aea1.css">
 		<link rel="stylesheet" href="/_app/assets/index-6eb20d90.css">
-		<link rel="modulepreload" href="/_app/start-9d6d7d61.js">
+		<link rel="modulepreload" href="/_app/start-0feadb0a.js">
 		<link rel="modulepreload" href="/_app/chunks/vendor-70f8720b.js">
 		<link rel="modulepreload" href="/_app/chunks/preload-helper-ec9aa979.js">
 		<link rel="modulepreload" href="/_app/pages/__layout.svelte-f1df00b4.js">
-		<link rel="modulepreload" href="/_app/pages/index.svelte-df8b839c.js">
-		<link rel="modulepreload" href="/_app/chunks/index-8d97df35.js">
+		<link rel="modulepreload" href="/_app/pages/index.svelte-1e44eeff.js">
+		<link rel="modulepreload" href="/_app/chunks/index-8f328d0a.js">
 
 		<script type="module">
-			import { start } from "/_app/start-9d6d7d61.js";
+			import { start } from "/_app/start-0feadb0a.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"","assets":""},
@@ -33,7 +33,7 @@
 					error: null,
 					nodes: [
 						import("/_app/pages/__layout.svelte-f1df00b4.js"),
-						import("/_app/pages/index.svelte-df8b839c.js")
+						import("/_app/pages/index.svelte-1e44eeff.js")
 					],
 					url: new URL("http://prerender/"),
 					params: {}
@@ -150,7 +150,7 @@
 	<div><div><button class="button is-primary">Download Plugin As Zip</button>
 	<button class="button is-primary">Download Config</button></div>
 <p>After you have extracted your plugin into the &quot;Plugins&quot; directory, make sure to execute the following command from within your terminal:</p>
-<pre class="overflow-auto p-4 svelte-f9ks2p">dotnet add project Plugins//.csproj
+<pre class="overflow-auto p-4 svelte-f9ks2p">dotnet &quot;sln&quot; &quot;add&quot; &quot;Plugins//.csproj&quot;
 </pre></div>
 </div>
 </main>

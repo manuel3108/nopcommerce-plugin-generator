@@ -1,6 +1,6 @@
 {
   ".svelte-kit/build/runtime/internal/start.js": {
-    "file": "start-9d6d7d61.js",
+    "file": "start-0feadb0a.js",
     "src": ".svelte-kit/build/runtime/internal/start.js",
     "isEntry": true,
     "imports": [
@@ -10,7 +10,7 @@
     "dynamicImports": [
       "src/routes/__layout.svelte",
       ".svelte-kit/build/components/error.svelte",
-      "_index-8d97df35.js"
+      "_index-8f328d0a.js"
     ],
     "css": [
       "assets/start-d5b4de3e.css"
@@ -38,12 +38,12 @@
     ]
   },
   "src/routes/index.svelte": {
-    "file": "pages/index.svelte-df8b839c.js",
+    "file": "pages/index.svelte-1e44eeff.js",
     "src": "src/routes/index.svelte",
     "isEntry": true,
     "imports": [
       "_vendor-70f8720b.js",
-      "_index-8d97df35.js",
+      "_index-8f328d0a.js",
       "_preload-helper-ec9aa979.js"
     ]
   },
@@ -53,8 +53,8 @@
   "_preload-helper-ec9aa979.js": {
     "file": "chunks/preload-helper-ec9aa979.js"
   },
-  "_index-8d97df35.js": {
-    "file": "chunks/index-8d97df35.js",
+  "_index-8f328d0a.js": {
+    "file": "chunks/index-8f328d0a.js",
     "isDynamicEntry": true,
     "imports": [
       "_vendor-70f8720b.js",
@@ -83,16 +83,16 @@
     ]
   },
   "src/lib/scripts/generators/4.40.x/csharp/AdminConfigurationControllerGenerator.ts": {
-    "file": "chunks/AdminConfigurationControllerGenerator-c2774545.js",
+    "file": "chunks/AdminConfigurationControllerGenerator-b3fd2067.js",
     "src": "src/lib/scripts/generators/4.40.x/csharp/AdminConfigurationControllerGenerator.ts",
     "isDynamicEntry": true,
     "imports": [
-      "_index-8d97df35.js",
+      "_index-8f328d0a.js",
       "_File-9e84454c.js",
-      "_Class-dde22e9d.js",
-      "_Field-c72a9cc1.js",
+      "_Class-e87ce32d.js",
+      "_Field-99d04566.js",
       "_FieldAttribute-df44d096.js",
-      "_ClassBase-dc258751.js",
+      "_ClassBase-de008cba.js",
       "_vendor-70f8720b.js",
       "_preload-helper-ec9aa979.js"
     ]
@@ -100,216 +100,216 @@
   "_File-9e84454c.js": {
     "file": "chunks/File-9e84454c.js"
   },
-  "_Class-dde22e9d.js": {
-    "file": "chunks/Class-dde22e9d.js",
+  "_Class-e87ce32d.js": {
+    "file": "chunks/Class-e87ce32d.js",
     "imports": [
-      "_ClassBase-dc258751.js"
+      "_ClassBase-de008cba.js"
     ]
   },
-  "_Field-c72a9cc1.js": {
-    "file": "chunks/Field-c72a9cc1.js",
+  "_Field-99d04566.js": {
+    "file": "chunks/Field-99d04566.js",
     "imports": [
-      "_index-8d97df35.js"
+      "_index-8f328d0a.js"
     ]
   },
   "_FieldAttribute-df44d096.js": {
     "file": "chunks/FieldAttribute-df44d096.js"
   },
-  "_ClassBase-dc258751.js": {
-    "file": "chunks/ClassBase-dc258751.js",
+  "_ClassBase-de008cba.js": {
+    "file": "chunks/ClassBase-de008cba.js",
     "imports": [
-      "_index-8d97df35.js"
+      "_index-8f328d0a.js"
     ]
   },
   "src/lib/scripts/generators/4.40.x/csharp/AdminConfigurationModelGenerator.ts": {
-    "file": "chunks/AdminConfigurationModelGenerator-c97dff5d.js",
+    "file": "chunks/AdminConfigurationModelGenerator-d78d4f21.js",
     "src": "src/lib/scripts/generators/4.40.x/csharp/AdminConfigurationModelGenerator.ts",
     "isDynamicEntry": true,
     "imports": [
-      "_index-8d97df35.js",
+      "_index-8f328d0a.js",
       "_File-9e84454c.js",
-      "_Field-c72a9cc1.js",
+      "_Field-99d04566.js",
       "_FieldAttribute-df44d096.js",
-      "_ClassBase-dc258751.js",
+      "_ClassBase-de008cba.js",
       "_vendor-70f8720b.js",
       "_preload-helper-ec9aa979.js"
     ]
   },
   "src/lib/scripts/generators/4.40.x/csharp/BasePluginGenerator.ts": {
-    "file": "chunks/BasePluginGenerator-3fa61998.js",
+    "file": "chunks/BasePluginGenerator-c9cf1d46.js",
     "src": "src/lib/scripts/generators/4.40.x/csharp/BasePluginGenerator.ts",
     "isDynamicEntry": true,
     "imports": [
-      "_Class-dde22e9d.js",
-      "_Field-c72a9cc1.js",
-      "_ClassBase-dc258751.js",
-      "_index-8d97df35.js",
+      "_Class-e87ce32d.js",
+      "_Field-99d04566.js",
+      "_ClassBase-de008cba.js",
+      "_index-8f328d0a.js",
       "_File-9e84454c.js",
       "_vendor-70f8720b.js",
       "_preload-helper-ec9aa979.js"
     ]
   },
   "src/lib/scripts/generators/4.40.x/csharp/DatabaseEntityGenerator.ts": {
-    "file": "chunks/DatabaseEntityGenerator-b202c57b.js",
+    "file": "chunks/DatabaseEntityGenerator-31b360c7.js",
     "src": "src/lib/scripts/generators/4.40.x/csharp/DatabaseEntityGenerator.ts",
     "isDynamicEntry": true,
     "imports": [
       "_File-9e84454c.js",
-      "_Class-dde22e9d.js",
-      "_Field-c72a9cc1.js",
-      "_ClassBase-dc258751.js",
-      "_index-8d97df35.js",
+      "_Class-e87ce32d.js",
+      "_Field-99d04566.js",
+      "_ClassBase-de008cba.js",
+      "_index-8f328d0a.js",
       "_vendor-70f8720b.js",
       "_preload-helper-ec9aa979.js"
     ]
   },
   "src/lib/scripts/generators/4.40.x/csharp/DependencyRegistrarGenerator.ts": {
-    "file": "chunks/DependencyRegistrarGenerator-aacd421c.js",
+    "file": "chunks/DependencyRegistrarGenerator-64c26cc4.js",
     "src": "src/lib/scripts/generators/4.40.x/csharp/DependencyRegistrarGenerator.ts",
     "isDynamicEntry": true,
     "imports": [
-      "_Class-dde22e9d.js",
-      "_Field-c72a9cc1.js",
-      "_ClassBase-dc258751.js",
+      "_Class-e87ce32d.js",
+      "_Field-99d04566.js",
+      "_ClassBase-de008cba.js",
       "_File-9e84454c.js",
-      "_index-8d97df35.js",
+      "_index-8f328d0a.js",
       "_vendor-70f8720b.js",
       "_preload-helper-ec9aa979.js"
     ]
   },
   "src/lib/scripts/generators/4.40.x/csharp/NameCompatibilityGenerator.ts": {
-    "file": "chunks/NameCompatibilityGenerator-7e4de2cc.js",
+    "file": "chunks/NameCompatibilityGenerator-e2b3d252.js",
     "src": "src/lib/scripts/generators/4.40.x/csharp/NameCompatibilityGenerator.ts",
     "isDynamicEntry": true,
     "imports": [
-      "_index-8d97df35.js",
+      "_index-8f328d0a.js",
       "_File-9e84454c.js",
-      "_Class-dde22e9d.js",
-      "_Field-c72a9cc1.js",
-      "_ClassBase-dc258751.js",
+      "_Class-e87ce32d.js",
+      "_Field-99d04566.js",
+      "_ClassBase-de008cba.js",
       "_vendor-70f8720b.js",
       "_preload-helper-ec9aa979.js"
     ]
   },
   "src/lib/scripts/generators/4.40.x/csharp/PluginDefaultsGenerator.ts": {
-    "file": "chunks/PluginDefaultsGenerator-40bb0e90.js",
+    "file": "chunks/PluginDefaultsGenerator-2f5b6ed7.js",
     "src": "src/lib/scripts/generators/4.40.x/csharp/PluginDefaultsGenerator.ts",
     "isDynamicEntry": true,
     "imports": [
-      "_Class-dde22e9d.js",
-      "_Field-c72a9cc1.js",
-      "_ClassBase-dc258751.js",
+      "_Class-e87ce32d.js",
+      "_Field-99d04566.js",
+      "_ClassBase-de008cba.js",
       "_File-9e84454c.js",
-      "_index-8d97df35.js",
+      "_index-8f328d0a.js",
       "_vendor-70f8720b.js",
       "_preload-helper-ec9aa979.js"
     ]
   },
   "src/lib/scripts/generators/4.40.x/csharp/PluginSettingsGenerator.ts": {
-    "file": "chunks/PluginSettingsGenerator-7e8bcc3f.js",
+    "file": "chunks/PluginSettingsGenerator-b6256ae7.js",
     "src": "src/lib/scripts/generators/4.40.x/csharp/PluginSettingsGenerator.ts",
     "isDynamicEntry": true,
     "imports": [
       "_File-9e84454c.js",
-      "_Class-dde22e9d.js",
-      "_Field-c72a9cc1.js",
-      "_ClassBase-dc258751.js",
-      "_index-8d97df35.js",
+      "_Class-e87ce32d.js",
+      "_Field-99d04566.js",
+      "_ClassBase-de008cba.js",
+      "_index-8f328d0a.js",
       "_vendor-70f8720b.js",
       "_preload-helper-ec9aa979.js"
     ]
   },
   "src/lib/scripts/generators/4.40.x/csharp/SchemaMigrationGenerator.ts": {
-    "file": "chunks/SchemaMigrationGenerator-4a8fe8fd.js",
+    "file": "chunks/SchemaMigrationGenerator-69fd162b.js",
     "src": "src/lib/scripts/generators/4.40.x/csharp/SchemaMigrationGenerator.ts",
     "isDynamicEntry": true,
     "imports": [
       "_File-9e84454c.js",
-      "_Class-dde22e9d.js",
-      "_Field-c72a9cc1.js",
+      "_Class-e87ce32d.js",
+      "_Field-99d04566.js",
       "_FieldAttribute-df44d096.js",
-      "_ClassBase-dc258751.js",
-      "_index-8d97df35.js",
+      "_ClassBase-de008cba.js",
+      "_index-8f328d0a.js",
       "_vendor-70f8720b.js",
       "_preload-helper-ec9aa979.js"
     ]
   },
   "src/lib/scripts/generators/4.40.x/csharp/ServiceClassesGenerator.ts": {
-    "file": "chunks/ServiceClassesGenerator-576768ac.js",
+    "file": "chunks/ServiceClassesGenerator-1bf6b440.js",
     "src": "src/lib/scripts/generators/4.40.x/csharp/ServiceClassesGenerator.ts",
     "isDynamicEntry": true,
     "imports": [
       "_File-9e84454c.js",
-      "_Class-dde22e9d.js",
-      "_index-8d97df35.js",
-      "_ClassBase-dc258751.js",
+      "_Class-e87ce32d.js",
+      "_index-8f328d0a.js",
+      "_ClassBase-de008cba.js",
       "_vendor-70f8720b.js",
       "_preload-helper-ec9aa979.js"
     ]
   },
   "src/lib/scripts/generators/4.40.x/cshtml/AdminConfigurationBaseGenerator.ts": {
-    "file": "chunks/AdminConfigurationBaseGenerator-779dff29.js",
+    "file": "chunks/AdminConfigurationBaseGenerator-1d74d31f.js",
     "src": "src/lib/scripts/generators/4.40.x/cshtml/AdminConfigurationBaseGenerator.ts",
     "isDynamicEntry": true,
     "imports": [
       "_File-9e84454c.js",
-      "_index-8d97df35.js",
+      "_index-8f328d0a.js",
       "_vendor-70f8720b.js",
       "_preload-helper-ec9aa979.js"
     ]
   },
   "src/lib/scripts/generators/4.40.x/cshtml/AdminConfigurationSettingsGenerator.ts": {
-    "file": "chunks/AdminConfigurationSettingsGenerator-0ef9cd8a.js",
+    "file": "chunks/AdminConfigurationSettingsGenerator-bc569384.js",
     "src": "src/lib/scripts/generators/4.40.x/cshtml/AdminConfigurationSettingsGenerator.ts",
     "isDynamicEntry": true,
     "imports": [
-      "_index-8d97df35.js",
+      "_index-8f328d0a.js",
       "_File-9e84454c.js",
       "_vendor-70f8720b.js",
       "_preload-helper-ec9aa979.js"
     ]
   },
   "src/lib/scripts/generators/4.40.x/cshtml/ViewImportsGenerator.ts": {
-    "file": "chunks/ViewImportsGenerator-a086baf5.js",
+    "file": "chunks/ViewImportsGenerator-187079d5.js",
     "src": "src/lib/scripts/generators/4.40.x/cshtml/ViewImportsGenerator.ts",
     "isDynamicEntry": true,
     "imports": [
       "_File-9e84454c.js",
-      "_index-8d97df35.js",
+      "_index-8f328d0a.js",
       "_vendor-70f8720b.js",
       "_preload-helper-ec9aa979.js"
     ]
   },
   "src/lib/scripts/generators/4.40.x/csproj/ProjectFileGenerator.ts": {
-    "file": "chunks/ProjectFileGenerator-adca63db.js",
+    "file": "chunks/ProjectFileGenerator-68e0e6fd.js",
     "src": "src/lib/scripts/generators/4.40.x/csproj/ProjectFileGenerator.ts",
     "isDynamicEntry": true,
     "imports": [
       "_File-9e84454c.js",
-      "_index-8d97df35.js",
+      "_index-8f328d0a.js",
       "_vendor-70f8720b.js",
       "_preload-helper-ec9aa979.js"
     ]
   },
   "src/lib/scripts/generators/4.40.x/json/PluginJsonGenerator.ts": {
-    "file": "chunks/PluginJsonGenerator-a3bafc14.js",
+    "file": "chunks/PluginJsonGenerator-044ad0d6.js",
     "src": "src/lib/scripts/generators/4.40.x/json/PluginJsonGenerator.ts",
     "isDynamicEntry": true,
     "imports": [
       "_File-9e84454c.js",
-      "_index-8d97df35.js",
+      "_index-8f328d0a.js",
       "_vendor-70f8720b.js",
       "_preload-helper-ec9aa979.js"
     ]
   },
   "src/lib/scripts/generators/4.50.x/json/PluginJsonGenerator.ts": {
-    "file": "chunks/PluginJsonGenerator-6f66a263.js",
+    "file": "chunks/PluginJsonGenerator-302ba4b7.js",
     "src": "src/lib/scripts/generators/4.50.x/json/PluginJsonGenerator.ts",
     "isDynamicEntry": true,
     "imports": [
       "src/lib/scripts/generators/4.40.x/json/PluginJsonGenerator.ts",
       "_File-9e84454c.js",
-      "_index-8d97df35.js",
+      "_index-8f328d0a.js",
       "_vendor-70f8720b.js",
       "_preload-helper-ec9aa979.js"
     ]
