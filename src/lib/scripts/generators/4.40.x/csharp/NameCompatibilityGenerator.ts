@@ -25,6 +25,7 @@ export default class NameCompatibilityGenerator implements IFileGenerator {
 			addCtor: false,
 			addRegions: false
 		});
+		myClass.inheritsFrom = "INameCompatibility";
 
 		myClass.usings.push(new Using('Nop.Data.Mapping'));
 		myClass.usings.push(new Using('System.Collections.Generic'));
