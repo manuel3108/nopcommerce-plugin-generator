@@ -1,0 +1,1 @@
+import o from"./PluginJsonGenerator-c2372551.js";import"./File-9e84454c.js";import"./index-70878895.js";import"./vendor-70f8720b.js";import"./preload-helper-ec9aa979.js";class l extends o{generatePluginsJsonContent(n){const e=super.generatePluginsJsonContent(n);return e.SupportedVersions=["4.50"],e}}export{l as default};
