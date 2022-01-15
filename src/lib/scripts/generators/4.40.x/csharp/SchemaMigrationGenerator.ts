@@ -23,7 +23,7 @@ export default class SchemaMigrationGenerator implements IFileGenerator {
 	}
 
 	protected generateContent(config: PluginConfig, path: string[], className: string): string {
-		const date = DateTime.now().toFormat('yyyy/MM/dd HH:mm:ss:SSS');
+		const date = DateTime.now().toFormat('yyyy/MM/dd HH:mm:ss:SSS') + "0000";
 		const myClass = new Class(generateClassNamespace(config.base.nameSpace, path), className, {
 			addCtor: true,
 			addRegions: true,
