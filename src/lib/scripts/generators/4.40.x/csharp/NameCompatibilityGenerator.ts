@@ -55,7 +55,7 @@ ${getIntend(2)}}`
 				isProperty: true,
 				isConstant: false,
 				isReadonly: false,
-				value: `new Dictionary<(Type, string), string>()`
+				value: `new Dictionary<(Type, string), string>`
 			}),
 			false
 		);
