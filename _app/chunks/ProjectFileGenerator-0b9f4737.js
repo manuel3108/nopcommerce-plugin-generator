@@ -1,4 +1,4 @@
-import{F as p}from"./File-9e84454c.js";import{h as r,a as t,L as a}from"./index-62f1eb3a.js";import"./vendor-ee3c6b4b.js";import"./preload-helper-ec9aa979.js";class c{generate(e){return[new p(e.base.nameSpace,"csproj",[],`<Project Sdk="Microsoft.NET.Sdk">
+import{F as p}from"./File-9e84454c.js";import{h as r,a as t,L as a}from"./index-7c690f16.js";import"./vendor-ee3c6b4b.js";import"./preload-helper-ec9aa979.js";class c{generate(e){return[new p(e.base.nameSpace,"csproj",[],`<Project Sdk="Microsoft.NET.Sdk">
 
 <PropertyGroup>
 	<TargetFramework>net5.0</TargetFramework>

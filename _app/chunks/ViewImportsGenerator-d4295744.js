@@ -1,4 +1,4 @@
-import{F as i}from"./File-9e84454c.js";import{f as r}from"./index-62f1eb3a.js";import"./vendor-ee3c6b4b.js";import"./preload-helper-ec9aa979.js";class g{generate(e){const s=["Areas","Admin","Views"],o="_ViewImports",n="cshtml";return r(s,o,n),[new i(o,n,s,this.generateContent(e))]}generateContent(e){return`@inherits Nop.Web.Framework.Mvc.Razor.NopRazorPage<TModel>
+import{F as i}from"./File-9e84454c.js";import{f as r}from"./index-7c690f16.js";import"./vendor-ee3c6b4b.js";import"./preload-helper-ec9aa979.js";class g{generate(e){const s=["Areas","Admin","Views"],o="_ViewImports",n="cshtml";return r(s,o,n),[new i(o,n,s,this.generateContent(e))]}generateContent(e){return`@inherits Nop.Web.Framework.Mvc.Razor.NopRazorPage<TModel>
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @addTagHelper *, Nop.Web.Framework
 
