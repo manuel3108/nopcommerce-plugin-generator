@@ -1,4 +1,4 @@
-import{F as s}from"./File-9e84454c.js";import{f as o,b as n}from"./index-69ece338.js";import"./vendor-70f8720b.js";import"./preload-helper-ec9aa979.js";class u{generate(e){const t=["Areas","Admin","Views","Configuration"],a="Configure",i="cshtml";return o(t,a,i),[new s(a,i,t,this.generateContent(e))]}generateContent(e){const t=`Plugins.${e.details.systemName}.Configure`;n(t,"Configure");const a=`Plugins.${e.details.systemName}.Card.Settings`;return n(a,"Settings"),`@model ConfigurationModel
+import{F as s}from"./File-9e84454c.js";import{f as o,b as n}from"./index-c81ccb4a.js";import"./vendor-ee3c6b4b.js";import"./preload-helper-ec9aa979.js";class u{generate(e){const t=["Areas","Admin","Views","Configuration"],a="Configure",i="cshtml";return o(t,a,i),[new s(a,i,t,this.generateContent(e))]}generateContent(e){const t=`Plugins.${e.details.systemName}.Configure`;n(t,"Configure");const a=`Plugins.${e.details.systemName}.Card.Settings`;return n(a,"Settings"),`@model ConfigurationModel
 @using ${e.base.nameSpace}.Areas.Admin.Models
 @using Microsoft.AspNetCore.Html
 
