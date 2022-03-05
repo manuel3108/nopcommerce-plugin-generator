@@ -2,6 +2,7 @@ import { File } from '$lib/scripts/common/File';
 import type PluginConfig from '$lib/scripts/configs/PluginConfig';
 import type { Service } from '$lib/scripts/configs/PluginServicesConfig';
 import Class from '$lib/scripts/csharp-lib/base/Class';
+import Interface from '$lib/scripts/csharp-lib/base/Interface';
 import { generateClassNamespace, getDefaultInterfaceName } from '$lib/scripts/csharp-lib/common/Helper';
 import type IFileGenerator from '../../IFileGenerator';
 
@@ -27,7 +28,7 @@ export default class ServiceClassesGenerator implements IFileGenerator {
 	}
 
 	protected generateServiceInterfaceContent(serviceClass: Service, path: string[], config: PluginConfig): string {
-		const myInterface = new Class(
+		const myInterface = new Interface(
 			generateClassNamespace(config.base.nameSpace, path),
 			serviceClass.interfaceName || getDefaultInterfaceName(serviceClass.name),
 			{
