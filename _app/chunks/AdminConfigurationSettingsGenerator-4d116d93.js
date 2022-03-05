@@ -1,4 +1,4 @@
-import{f as t,L as s,O as i,a as n}from"./index-c81ccb4a.js";import{F as d}from"./File-9e84454c.js";import"./vendor-ee3c6b4b.js";import"./preload-helper-ec9aa979.js";class f{generate(e){const o=["Areas","Admin","Views","Configuration"],a="_Configure.Settings",r="cshtml";return t(o,a,r),[new d(a,r,o,this.generateContent(e))]}generateContent(e){return`@model ConfigurationModel
+import{f as t,L as s,O as i,a as n}from"./index-62f1eb3a.js";import{F as d}from"./File-9e84454c.js";import"./vendor-ee3c6b4b.js";import"./preload-helper-ec9aa979.js";class f{generate(e){const o=["Areas","Admin","Views","Configuration"],a="_Configure.Settings",r="cshtml";return t(o,a,r),[new d(a,r,o,this.generateContent(e))]}generateContent(e){return`@model ConfigurationModel
 @using ${e.base.nameSpace}.Areas.Admin.Models
 
 <div class="card-body">
