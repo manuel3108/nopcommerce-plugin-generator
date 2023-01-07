@@ -42,10 +42,15 @@ export class FileGenerator {
 
 		if (config.services.serviceClasses.length > 0) {
 			const serviceClasses = await this.loadModule(version, GeneratorLanguages.CSHARP, 'ServiceClassesGenerator');
-			const dependencyRegistrar = await this.loadModule(version, GeneratorLanguages.CSHARP, 'DependencyRegistrarGenerator');
-
 			generators.push(serviceClasses);
-			generators.push(dependencyRegistrar);
+
+			if (version === Version.v4_40_x) {
+				const dependencyRegistrar = await this.loadModule(version, GeneratorLanguages.CSHARP, 'DependencyRegistrarGenerator');
+				generators.push(dependencyRegistrar);
+			} else {
+				const nopStartup = await this.loadModule(version, GeneratorLanguages.CSHARP, 'NopStartupGenerator');
+				generators.push(nopStartup);
+			}
 		}
 
 		if (config.database.entities.length > 0) {

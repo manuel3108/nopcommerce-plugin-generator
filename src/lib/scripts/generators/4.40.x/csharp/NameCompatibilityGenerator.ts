@@ -49,13 +49,13 @@ ${getIntend(2)}}`
 		);
 
 		myClass.addField(
-			new Field(Visibility.Public, 'ColumnName', 'Dictionary<(Type, string), string>()', {
+			new Field(Visibility.Public, 'ColumnName', 'Dictionary<(Type, string), string>', {
 				additionalNewLine: false,
 				hasGetterAndSetter: false,
 				isProperty: true,
 				isConstant: false,
 				isReadonly: false,
-				value: `new Dictionary<(Type, string), string>`
+				value: `new Dictionary<(Type, string), string>()`
 			}),
 			false
 		);
