@@ -1,3 +1,5 @@
+import { Version } from '$lib/scripts/common/Version';
+import { FileGenerator } from '$lib/scripts/generators/FileGenerator';
 import { FieldPrefix, LineBreak } from '../../common/Defaults';
 import { getIntend } from '../common/Helper';
 import type ClassBaseOptions from './ClassBaseOptions';
@@ -50,16 +52,24 @@ export default class ClassBase {
 	}
 
 	public toString(): string {
-		const baseIntend = 1;
+		let baseIntend = 0;
+		const nopCommerceVersion = FileGenerator.currentConfig.base.nopCommerceVersion;
+		const useOldNamespaceLayout = nopCommerceVersion === Version.v4_40_x || nopCommerceVersion === Version.v4_50_x;
 
 		// header
 		let result = `${this.usings.map((using) => using.toString()).join(LineBreak)}${LineBreak}${LineBreak}`;
-		result += `namespace ${this.namespace}${LineBreak}`;
-		result += `{${LineBreak}`;
+
+		if (useOldNamespaceLayout) {
+			result += `namespace ${this.namespace}${LineBreak}`;
+			result += `{${LineBreak}`;
+			baseIntend = 1;
+		} else {
+			result += `namespace ${this.namespace};${LineBreak}${LineBreak}`;
+		}
 
 		// attributes
 		if (this.options.attributes) {
-			result += this.options.attributes.map((attribute) => getIntend(1) + attribute.toString()).join(LineBreak) + LineBreak;
+			result += this.options.attributes.map((attribute) => getIntend(baseIntend) + attribute.toString()).join(LineBreak) + LineBreak;
 		}
 
 		result += `${getIntend(baseIntend)}public ${this.type} ${this.name} ${this.inheritsFrom ? `: ${this.inheritsFrom}` : ''}${LineBreak}`;
@@ -84,7 +94,10 @@ export default class ClassBase {
 
 		// footer
 		result += `${getIntend(baseIntend)}}${LineBreak}`;
-		result += `}${LineBreak}`;
+
+		if (useOldNamespaceLayout) {
+			result += `}${LineBreak}`;
+		}
 
 		return result;
 	}

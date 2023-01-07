@@ -8,10 +8,12 @@ import { clearViews } from './ViewsSingleton';
 
 export class FileGenerator {
 	private static readonly defaultModuleVersion = Version.v4_40_x;
+	public static currentConfig: PluginConfig;
 
 	static async generate(config: PluginConfig): Promise<File[]> {
 		const generators: IFileGenerator[] = [];
 		const version = config.base.nopCommerceVersion;
+		this.currentConfig = config;
 
 		// cleanup from last run
 		clearLanguageResource();
@@ -75,6 +77,8 @@ export class FileGenerator {
 
 		// update file ids
 		FileGenerator.updateFileIds(files);
+
+		this.currentConfig = null;
 
 		return files;
 	}
