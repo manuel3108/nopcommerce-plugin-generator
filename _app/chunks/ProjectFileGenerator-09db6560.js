@@ -1,1 +1,0 @@
-import t from"./ProjectFileGenerator-28eeb6b5.js";import"./File-9e84454c.js";import"./index-587a5fa5.js";import"./vendor-ee3c6b4b.js";import"./preload-helper-ec9aa979.js";class l extends t{generate(r){const e=super.generate(r);return e[0].content=e[0].content.replace("net5.0","net6.0"),e}}export{l as default};
