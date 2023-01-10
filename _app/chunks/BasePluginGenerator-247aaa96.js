@@ -1,1 +1,0 @@
-import e from"./BasePluginGenerator-01a96542.js";import"./BasePluginGenerator-d48145b6.js";import"./Class-7b935fc0.js";import"./ClassBase-41fafc6f.js";import"./index-dd84ffed.js";import"./vendor-ee3c6b4b.js";import"./preload-helper-ec9aa979.js";import"./Field-b8f50578.js";import"./File-9e84454c.js";class m extends e{}export{m as default};
