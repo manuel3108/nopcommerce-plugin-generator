@@ -23,7 +23,7 @@
 		"eslint-plugin-svelte3": "^3.2.1",
 		"file-saver": "^2.0.5",
 		"jszip": "^3.7.1",
-		"luxon": "^2.3.0",
+		"luxon": "^2.5.2",
 		"postcss": "^8.4.5",
 		"prettier": "^2.4.1",
 		"prettier-plugin-svelte": "^2.4.0",
